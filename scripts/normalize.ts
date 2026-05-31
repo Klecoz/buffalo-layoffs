@@ -7,7 +7,7 @@
 //
 // Pure helpers (classifyCounty, dedupe, …) are exported for unit testing; main()
 // just wires file I/O around them.
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { County, DatasetMeta, LayoffEvent, SourceKind } from "../shared/types.ts";
@@ -51,7 +51,11 @@ export function buildWarnEvents(
     if (!effectiveDate) continue;
 
     events.push({
-      id: makeId([parsed.company ?? entry.company, noticeDate ?? entry.datePosted, entry.pdfFilename]),
+      id: makeId([
+        parsed.company ?? entry.company,
+        noticeDate ?? entry.datePosted,
+        entry.pdfFilename,
+      ]),
       company: parsed.company ?? entry.company,
       county,
       region: parsed.region ?? entry.region,
@@ -121,8 +125,7 @@ function sameEvent(a: LayoffEvent, b: LayoffEvent): boolean {
   if (Number.isNaN(da) || Number.isNaN(db)) return true; // same company, undatable → treat as dup
   const gap = Math.abs(da - db);
   if (gap <= AMENDMENT_WINDOW_DAYS * DAY) return true;
-  const sameCount =
-    a.numberAffected != null && a.numberAffected === b.numberAffected;
+  const sameCount = a.numberAffected != null && a.numberAffected === b.numberAffected;
   return sameCount && gap <= SAME_COUNT_WINDOW_DAYS * DAY;
 }
 
@@ -187,7 +190,10 @@ function main() {
   if (existsSync(parsedDir)) {
     for (const file of readdirSync(parsedDir)) {
       if (!file.endsWith(".json")) continue;
-      parsedByFile.set(file.replace(/\.json$/, ""), JSON.parse(readFileSync(join(parsedDir, file), "utf-8")));
+      parsedByFile.set(
+        file.replace(/\.json$/, ""),
+        JSON.parse(readFileSync(join(parsedDir, file), "utf-8")),
+      );
     }
   }
 

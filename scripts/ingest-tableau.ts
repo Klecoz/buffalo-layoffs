@@ -147,6 +147,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const events = loadTableau();
   console.log(`Loaded ${events.length} Erie/Niagara notices from the Tableau export.`);
   for (const e of events.sort((a, b) => b.noticeDate.localeCompare(a.noticeDate))) {
-    console.log(`  ${e.noticeDate}  ${String(e.numberAffected).padStart(5)}  ${e.county}  ${e.company}`);
+    console.log(
+      `  ${e.noticeDate}  ${String(e.numberAffected).padStart(5)}  ${e.county}  ${e.company}`,
+    );
   }
 }

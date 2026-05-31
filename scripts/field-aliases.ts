@@ -15,7 +15,12 @@ export const FIELD_LABELS = {
     "Number Affected",
   ],
   totalEmployees: ["Total Number of Employees", "Total Number of Employees at Site"],
-  layoffDate: ["Layoff Start Date", "Closure Start Date", "Date of First Separation", "Layoff Date"],
+  layoffDate: [
+    "Layoff Start Date",
+    "Closure Start Date",
+    "Date of First Separation",
+    "Layoff Date",
+  ],
   layoffEndDate: ["Closure End Date", "Layoff End Date", "Closing Date", "Closure Date"],
   noticeDate: ["Date of Notice", "Notice Date", "Notice Dated"],
   region: ["Region"],

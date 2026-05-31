@@ -34,7 +34,8 @@ async function main() {
       const buf = await fetchBuffer(entry.pdfUrl);
       // Sanity-check it's actually a PDF before caching.
       const head = new TextDecoder().decode(buf.slice(0, 5));
-      if (!head.startsWith("%PDF")) throw new Error(`not a PDF (starts with ${JSON.stringify(head)})`);
+      if (!head.startsWith("%PDF"))
+        throw new Error(`not a PDF (starts with ${JSON.stringify(head)})`);
       writeFileSync(dest, buf);
       downloaded++;
       await sleep(DELAY_MS);

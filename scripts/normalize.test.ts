@@ -109,7 +109,11 @@ describe("dedupe — amendments and cross-source duplicates", () => {
   });
 
   it("merges an amendment that shares the original notice date", () => {
-    const original = event({ id: "o", company: "Sumitomo Rubber USA, LLC", noticeDate: "2024-11-07" });
+    const original = event({
+      id: "o",
+      company: "Sumitomo Rubber USA, LLC",
+      noticeDate: "2024-11-07",
+    });
     const amended = event({
       id: "am",
       company: "Sumitomo Rubber USA., LLC",

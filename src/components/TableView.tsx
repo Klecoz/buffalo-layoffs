@@ -88,8 +88,7 @@ export function TableView() {
         header: "Jobs",
         cell: ({ row }) => <MagnitudeCell value={row.original.numberAffected} max={maxAffected} />,
         sortUndefined: "last",
-        sortingFn: (a, b) =>
-          (a.original.numberAffected ?? -1) - (b.original.numberAffected ?? -1),
+        sortingFn: (a, b) => (a.original.numberAffected ?? -1) - (b.original.numberAffected ?? -1),
       },
       {
         accessorKey: "noticeDate",
@@ -144,7 +143,9 @@ export function TableView() {
                   }`}
                 >
                   <SortHeader
-                    label={flexRender(header.column.columnDef.header, header.getContext()) as string}
+                    label={
+                      flexRender(header.column.columnDef.header, header.getContext()) as string
+                    }
                     sorted={sorted}
                   />
                 </th>

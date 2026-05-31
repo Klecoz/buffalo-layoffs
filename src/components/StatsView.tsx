@@ -1,13 +1,5 @@
 import { useMemo } from "react";
-import {
-  Bar,
-  BarChart,
-  Cell,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { Bar, BarChart, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { useFilters } from "../context/FilterContext";
 import {
   biggestLayoffs,
@@ -47,7 +39,13 @@ interface TrendDatum {
   events: number;
 }
 
-function TrendTooltip({ active, payload }: { active?: boolean; payload?: { payload: TrendDatum }[] }) {
+function TrendTooltip({
+  active,
+  payload,
+}: {
+  active?: boolean;
+  payload?: { payload: TrendDatum }[];
+}) {
   if (!active || !payload?.length) return null;
   const d = payload[0].payload;
   return (
@@ -140,7 +138,9 @@ export function StatsView() {
             <BarChart data={trend} margin={{ top: 8, right: 8, bottom: 0, left: 8 }}>
               <XAxis
                 dataKey="month"
-                tickFormatter={(m: string) => (m.endsWith("-01") ? m.slice(0, 4) : formatMonth(m).split(" ")[0])}
+                tickFormatter={(m: string) =>
+                  m.endsWith("-01") ? m.slice(0, 4) : formatMonth(m).split(" ")[0]
+                }
                 interval="preserveStartEnd"
                 minTickGap={24}
                 axisLine={{ stroke: "var(--color-ink)" }}

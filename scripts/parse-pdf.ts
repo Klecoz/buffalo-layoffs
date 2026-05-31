@@ -12,9 +12,9 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Classification } from "../shared/types.ts";
+import { FIELD_LABELS } from "./field-aliases.ts";
 import { parseDate } from "./lib/dates.ts";
 import { extractPdfLines } from "./lib/pdf.ts";
-import { FIELD_LABELS } from "./field-aliases.ts";
 
 export interface ParsedWarn {
   company: string | null;

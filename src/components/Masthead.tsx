@@ -24,10 +24,9 @@ export function Masthead({ meta }: { meta: DatasetMeta | null }) {
       </h1>
 
       <p className="mt-4 max-w-2xl font-sans text-[0.95rem] leading-relaxed text-ink-soft">
-        A standing record of mass layoffs and plant closings across Western New York's two
-        core counties, drawn from the legally-required notices employers file with the State
-        before they cut jobs. Covering{" "}
-        <span className="font-semibold text-ink">{range}</span>.
+        A standing record of mass layoffs and plant closings across Western New York's two core
+        counties, drawn from the legally-required notices employers file with the State before they
+        cut jobs. Covering <span className="font-semibold text-ink">{range}</span>.
       </p>
     </header>
   );

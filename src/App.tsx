@@ -5,7 +5,7 @@ import { Masthead } from "./components/Masthead";
 import { StatsView } from "./components/StatsView";
 import { TableView } from "./components/TableView";
 import { TimelineView } from "./components/TimelineView";
-import { ViewTabs, type ViewKey } from "./components/ViewTabs";
+import { type ViewKey, ViewTabs } from "./components/ViewTabs";
 import { DataProvider, useData } from "./context/DataContext";
 import { FilterProvider, useFilters } from "./context/FilterContext";
 
@@ -66,10 +66,10 @@ function Dashboard() {
       </div>
 
       <footer className="mt-16 border-t border-rule pt-4 text-[0.72rem] leading-relaxed text-ink-faint">
-        Source: New York State Department of Labor WARN Act notices (dol.ny.gov), with
-        unemployment context from FRED and a small set of news-reported closures. This is an
-        independent project, not affiliated with NYS DOL. Figures reflect notices filed, which
-        can be amended or withdrawn.
+        Source: New York State Department of Labor WARN Act notices (dol.ny.gov), with unemployment
+        context from FRED and a small set of news-reported closures. This is an independent project,
+        not affiliated with NYS DOL. Figures reflect notices filed, which can be amended or
+        withdrawn.
       </footer>
     </div>
   );

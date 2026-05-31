@@ -11,10 +11,10 @@ export function CoverageNote({ meta }: { meta: DatasetMeta | null }) {
       <p className="mt-1.5">
         New York's WARN Act only requires notice from employers with{" "}
         <strong className="text-ink">50+ workers</strong> cutting{" "}
-        <strong className="text-ink">25 or more jobs</strong> (or 250+). Smaller layoffs and
-        most retail, restaurant, and small-business closures never appear here — so these
-        totals are a floor, not the full count of jobs lost. A handful of news-reported
-        closures below the threshold are included and marked{" "}
+        <strong className="text-ink">25 or more jobs</strong> (or 250+). Smaller layoffs and most
+        retail, restaurant, and small-business closures never appear here — so these totals are a
+        floor, not the full count of jobs lost. A handful of news-reported closures below the
+        threshold are included and marked{" "}
         <span className="font-semibold text-brick">News-reported</span>.
         {excluded > 0 && (
           <>

@@ -44,7 +44,9 @@ export function TimelineView() {
   const { t0, t1 } = useMemo(() => {
     const times = filtered.map((e) => Date.parse(e.noticeDate));
     const seriesTimes = (series?.points ?? []).map((p) => Date.parse(p.date));
-    const all = [...times, ...seriesTimes, Date.parse("2024-01-01")].filter((n) => !Number.isNaN(n));
+    const all = [...times, ...seriesTimes, Date.parse("2024-01-01")].filter(
+      (n) => !Number.isNaN(n),
+    );
     const lo = Math.min(...all);
     const hi = Math.max(...all, Date.now() - 0); // through "now" upper bound from data
     return { t0: lo - 10 * DAY, t1: hi + 10 * DAY };
@@ -70,7 +72,10 @@ export function TimelineView() {
   const yRate = (r: number) => M.top + (1 - (r - rLo) / (rHi - rLo)) * innerH;
   const ratePath = (series?.points ?? [])
     .filter((p) => p.rate != null)
-    .map((p, i) => `${i === 0 ? "M" : "L"}${x(p.date).toFixed(1)},${yRate(p.rate as number).toFixed(1)}`)
+    .map(
+      (p, i) =>
+        `${i === 0 ? "M" : "L"}${x(p.date).toFixed(1)},${yRate(p.rate as number).toFixed(1)}`,
+    )
     .join(" ");
 
   // Quarter gridlines.
@@ -112,14 +117,19 @@ export function TimelineView() {
           Count unknown
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="inline-block h-0.5 w-5 bg-steel-soft/60" /> {series?.label ?? "Unemployment"}{" "}
-          rate (right axis)
+          <span className="inline-block h-0.5 w-5 bg-steel-soft/60" />{" "}
+          {series?.label ?? "Unemployment"} rate (right axis)
         </span>
         <span className="text-ink-faint">· dot size ∝ jobs cut</span>
       </div>
 
       <div ref={ref} className="relative w-full">
-        <svg width={width || 900} height={HEIGHT} role="img" aria-label="Timeline of layoff notices">
+        <svg
+          width={width || 900}
+          height={HEIGHT}
+          role="img"
+          aria-label="Timeline of layoff notices"
+        >
           {/* quarter gridlines */}
           {ticks.map((tk) => (
             <g key={tk.t}>
@@ -147,7 +157,13 @@ export function TimelineView() {
           {/* unemployment backdrop */}
           {ratePath && (
             <>
-              <path d={ratePath} fill="none" stroke="var(--color-steel-soft)" strokeWidth={1.5} opacity={0.45} />
+              <path
+                d={ratePath}
+                fill="none"
+                stroke="var(--color-steel-soft)"
+                strokeWidth={1.5}
+                opacity={0.45}
+              />
               {[rLo, Math.round((rLo + rHi) / 2), rHi].map((r) => (
                 <text
                   key={r}
@@ -163,7 +179,14 @@ export function TimelineView() {
           )}
 
           {/* baseline */}
-          <line x1={M.left} x2={M.left + innerW} y1={baselineY} y2={baselineY} stroke="var(--color-rule-strong)" strokeWidth={1} />
+          <line
+            x1={M.left}
+            x2={M.left + innerW}
+            y1={baselineY}
+            y2={baselineY}
+            stroke="var(--color-rule-strong)"
+            strokeWidth={1}
+          />
 
           {/* events */}
           {drawOrder.map((e) => {
@@ -173,7 +196,16 @@ export function TimelineView() {
             const isHover = hover?.e.id === e.id;
             return (
               <g key={e.id}>
-                <line x1={cx} x2={cx} y1={cy} y2={baselineY} stroke="var(--color-rule-strong)" strokeWidth={0.5} opacity={0.5} />
+                <line
+                  x1={cx}
+                  x2={cx}
+                  y1={cy}
+                  y2={baselineY}
+                  stroke="var(--color-rule-strong)"
+                  strokeWidth={0.5}
+                  opacity={0.5}
+                />
+                {/* biome-ignore lint/a11y/noStaticElementInteractions: SVG data point; hover is a supplement to the fully-accessible table view */}
                 <circle
                   cx={cx}
                   cy={cy}
@@ -200,7 +232,9 @@ export function TimelineView() {
               top: hover.y + 14,
             }}
           >
-            <div className="font-display text-[1.05rem] leading-tight text-ink">{hover.e.company}</div>
+            <div className="font-display text-[1.05rem] leading-tight text-ink">
+              {hover.e.company}
+            </div>
             <div className="nums mt-1 text-sm text-brick">
               {hover.e.numberAffected != null
                 ? `${formatNumber(hover.e.numberAffected)} jobs`

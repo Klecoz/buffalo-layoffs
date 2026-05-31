@@ -24,9 +24,7 @@ export function summarize(events: LayoffEvent[]): Summary {
   const biggest =
     counted.length === 0
       ? null
-      : counted.reduce((max, e) =>
-          (e.numberAffected ?? 0) > (max.numberAffected ?? 0) ? e : max,
-        );
+      : counted.reduce((max, e) => ((e.numberAffected ?? 0) > (max.numberAffected ?? 0) ? e : max));
   return {
     totalEvents: events.length,
     totalJobsLost,

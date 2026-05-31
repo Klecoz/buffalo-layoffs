@@ -33,7 +33,12 @@ const f = (over: Partial<Filters>): Filters => ({ ...EMPTY_FILTERS, ...over });
 describe("applyFilters", () => {
   const data = [
     ev({ company: "Tesla", county: "Erie", classification: "layoff", numberAffected: 285 }),
-    ev({ company: "Mayer Bros", county: "Niagara", classification: "plant_closing", numberAffected: 26 }),
+    ev({
+      company: "Mayer Bros",
+      county: "Niagara",
+      classification: "plant_closing",
+      numberAffected: 26,
+    }),
     ev({ company: "Flying Bison", county: "Erie", source: "curated_news", numberAffected: null }),
     ev({ company: "Old Notice", isAmendment: true }),
   ];
