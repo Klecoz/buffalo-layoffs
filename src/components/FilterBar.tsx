@@ -1,5 +1,7 @@
 import type { Classification, County, SourceKind } from "../../shared/types";
+import { useData } from "../context/DataContext";
 import { useFilters } from "../context/FilterContext";
+import { downloadCsv } from "../lib/exportCsv";
 import { formatClassification } from "../lib/format";
 
 function Chip({
@@ -15,10 +17,10 @@ function Chip({
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-sm border px-2.5 py-1 text-[0.72rem] font-semibold uppercase tracking-wider transition-colors ${
+      className={`border px-2.5 py-1 font-mono text-[0.7rem] uppercase tracking-[0.12em] transition-colors ${
         active
-          ? "border-ink bg-ink text-paper"
-          : "border-rule-strong bg-transparent text-ink-soft hover:border-ink hover:text-ink"
+          ? "border-amber bg-amber/15 text-amber"
+          : "border-rule-strong bg-transparent text-ink-soft hover:border-ink-faint hover:text-ink"
       }`}
     >
       {children}
@@ -30,6 +32,9 @@ function toggle<T>(arr: T[], value: T): T[] {
   return arr.includes(value) ? arr.filter((v) => v !== value) : [...arr, value];
 }
 
+const fieldClass =
+  "border border-rule-strong bg-transparent px-2 py-1 font-mono text-[0.78rem] text-ink caret-amber focus:border-ink-faint focus:outline-none";
+
 const COUNTIES: County[] = ["Erie", "Niagara", "unknown"];
 const CLASSES: Classification[] = ["plant_closing", "layoff", "other", "unknown"];
 const SOURCES: { key: SourceKind; label: string }[] = [
@@ -39,25 +44,35 @@ const SOURCES: { key: SourceKind; label: string }[] = [
 ];
 
 export function FilterBar() {
-  const { filters, setFilters, reset, active } = useFilters();
+  const { filters, setFilters, reset, active, filtered } = useFilters();
+  const { meta } = useData();
+  const [minIso, maxIso] = meta?.dateRange ?? [undefined, undefined];
+
+  const handleExport = () => {
+    const stamp = meta?.generatedAt?.slice(0, 10) ?? "export";
+    downloadCsv(filtered, `buffalo-layoffs-${stamp}.csv`);
+  };
 
   return (
-    <section className="reveal border border-rule bg-paper-raised/70 px-4 py-4 sm:px-5">
+    <section className="reveal panel px-4 py-4 sm:px-5">
       <div className="flex flex-col gap-4">
         {/* Search + reset */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 border-b border-rule pb-1">
+          <span className="font-mono text-amber" aria-hidden>
+            &gt;
+          </span>
           <input
             type="search"
             value={filters.search}
             onChange={(e) => setFilters({ search: e.target.value })}
-            placeholder="Search company, industry, reason…"
-            className="w-full border-b border-ink bg-transparent pb-1 font-display text-lg text-ink placeholder:text-ink-faint/70 placeholder:font-sans placeholder:text-base focus:outline-none"
+            placeholder="search company, industry, reason…"
+            className="w-full bg-transparent font-mono text-base text-ink caret-amber placeholder:text-ink-faint/70 focus:outline-none"
           />
           {active && (
             <button
               type="button"
               onClick={reset}
-              className="shrink-0 text-[0.72rem] font-semibold uppercase tracking-wider text-brick underline decoration-brick/40 underline-offset-4 hover:decoration-brick"
+              className="shrink-0 border border-brick/50 px-2 py-0.5 font-mono text-[0.7rem] uppercase tracking-[0.12em] text-brick transition-colors hover:bg-brick/10"
             >
               Clear
             </button>
@@ -111,6 +126,63 @@ export function FilterBar() {
               ))}
             </div>
           </div>
+        </div>
+
+        {/* Range, threshold, amendments + export */}
+        <div className="flex flex-wrap items-end gap-x-5 gap-y-3 border-t border-rule pt-3">
+          <div>
+            <div className="kicker mb-1.5">Notice from</div>
+            <input
+              type="date"
+              value={filters.dateStart ?? ""}
+              min={minIso}
+              max={filters.dateEnd ?? maxIso}
+              onChange={(e) => setFilters({ dateStart: e.target.value || null })}
+              className={fieldClass}
+            />
+          </div>
+          <div>
+            <div className="kicker mb-1.5">to</div>
+            <input
+              type="date"
+              value={filters.dateEnd ?? ""}
+              min={filters.dateStart ?? minIso}
+              max={maxIso}
+              onChange={(e) => setFilters({ dateEnd: e.target.value || null })}
+              className={fieldClass}
+            />
+          </div>
+          <div>
+            <div className="kicker mb-1.5">Min jobs (known)</div>
+            <input
+              type="number"
+              min={0}
+              inputMode="numeric"
+              placeholder="0"
+              value={filters.minAffected ?? ""}
+              onChange={(e) => {
+                const n = Number(e.target.value);
+                setFilters({
+                  minAffected: e.target.value !== "" && Number.isFinite(n) && n >= 0 ? n : null,
+                });
+              }}
+              className={`${fieldClass} w-20`}
+            />
+          </div>
+          <Chip
+            active={filters.showAmendments}
+            onClick={() => setFilters({ showAmendments: !filters.showAmendments })}
+          >
+            Show amendments
+          </Chip>
+          <button
+            type="button"
+            onClick={handleExport}
+            disabled={filtered.length === 0}
+            className="ml-auto self-end border border-rule-strong px-2.5 py-1 font-mono text-[0.7rem] uppercase tracking-[0.12em] text-ink-soft transition-colors hover:border-ink-faint hover:text-ink disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            ↓ CSV ({filtered.length})
+          </button>
         </div>
       </div>
     </section>

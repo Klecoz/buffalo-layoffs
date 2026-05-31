@@ -11,8 +11,8 @@ const DAY = 86_400_000;
 
 const CLASS_FILL: Record<string, string> = {
   plant_closing: "var(--color-brick)",
-  layoff: "var(--color-steel)",
-  other: "var(--color-ink-faint)",
+  layoff: "var(--color-amber)",
+  other: "var(--color-steel)",
   unknown: "var(--color-ink-faint)",
 };
 
@@ -110,7 +110,7 @@ export function TimelineView() {
           <span className="inline-block h-3 w-3 rounded-full bg-brick" /> Plant closing
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="inline-block h-3 w-3 rounded-full bg-steel" /> Layoff
+          <span className="inline-block h-3 w-3 rounded-full bg-amber" /> Layoff
         </span>
         <span className="flex items-center gap-1.5">
           <span className="inline-block h-3 w-3 rounded-full border border-ink-faint bg-transparent" />{" "}
@@ -194,6 +194,11 @@ export function TimelineView() {
             const cy = eventY(e);
             const unknown = e.numberAffected == null;
             const isHover = hover?.e.id === e.id;
+            const label = `${e.company}: ${
+              e.numberAffected != null
+                ? `${formatNumber(e.numberAffected)} jobs`
+                : "count not reported"
+            }${e.county !== "unknown" ? `, ${e.county} County` : ""}, ${formatDate(e.noticeDate)}`;
             return (
               <g key={e.id}>
                 <line
@@ -205,7 +210,7 @@ export function TimelineView() {
                   strokeWidth={0.5}
                   opacity={0.5}
                 />
-                {/* biome-ignore lint/a11y/noStaticElementInteractions: SVG data point; hover is a supplement to the fully-accessible table view */}
+                {/* biome-ignore lint/a11y/noStaticElementInteractions: SVG data point; tooltip on hover/focus/tap supplements the fully-accessible table view */}
                 <circle
                   cx={cx}
                   cy={cy}
@@ -214,10 +219,15 @@ export function TimelineView() {
                   fillOpacity={0.78}
                   stroke={unknown ? "var(--color-ink-faint)" : "var(--color-paper)"}
                   strokeWidth={unknown ? 1.25 : 1}
-                  className="cursor-pointer transition-[stroke-width]"
+                  className="cursor-pointer transition-[stroke-width] focus:outline-none"
                   style={isHover ? { strokeWidth: 2, stroke: "var(--color-ink)" } : undefined}
+                  tabIndex={0}
+                  aria-label={label}
                   onMouseEnter={() => setHover({ e, x: cx, y: cy })}
                   onMouseLeave={() => setHover((h) => (h?.e.id === e.id ? null : h))}
+                  onFocus={() => setHover({ e, x: cx, y: cy })}
+                  onBlur={() => setHover((h) => (h?.e.id === e.id ? null : h))}
+                  onTouchStart={() => setHover({ e, x: cx, y: cy })}
                 />
               </g>
             );
@@ -226,16 +236,16 @@ export function TimelineView() {
 
         {hover && (
           <div
-            className="pointer-events-none absolute z-10 w-56 -translate-x-1/2 border border-ink bg-paper-raised px-3 py-2 shadow-md"
+            className="pointer-events-none absolute z-10 w-56 -translate-x-1/2 border border-rule-strong bg-paper-raised px-3 py-2 shadow-lg shadow-black/50"
             style={{
               left: Math.min(Math.max(hover.x, 116), (width || 900) - 116),
               top: hover.y + 14,
             }}
           >
-            <div className="font-display text-[1.05rem] leading-tight text-ink">
+            <div className="font-sans text-[1rem] font-semibold leading-tight text-ink">
               {hover.e.company}
             </div>
-            <div className="nums mt-1 text-sm text-brick">
+            <div className="nums mt-1 font-mono text-sm text-amber">
               {hover.e.numberAffected != null
                 ? `${formatNumber(hover.e.numberAffected)} jobs`
                 : "Count not reported"}

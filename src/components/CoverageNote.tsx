@@ -6,8 +6,8 @@ import type { DatasetMeta } from "../../shared/types";
 export function CoverageNote({ meta }: { meta: DatasetMeta | null }) {
   const excluded = meta?.excludedFromTotalsCount ?? 0;
   return (
-    <aside className="reveal border-l-2 border-brick bg-paper-raised/60 px-4 py-3 text-[0.8rem] leading-relaxed text-ink-soft">
-      <span className="kicker text-brick">A note on what this counts</span>
+    <aside className="reveal border border-rule border-l-2 border-l-amber bg-paper-raised/50 px-4 py-3 font-sans text-[0.8rem] leading-relaxed text-ink-soft">
+      <span className="kicker text-amber">▲ A note on what this counts</span>
       <p className="mt-1.5">
         New York's WARN Act only requires notice from employers with{" "}
         <strong className="text-ink">50+ workers</strong> cutting{" "}

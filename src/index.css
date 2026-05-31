@@ -1,55 +1,104 @@
 @import "tailwindcss";
 
-/* ── "The Ledger" — a Rust Belt broadsheet ───────────────────────────────────
-   A newspaper-of-record treatment for a somber public record: layoffs in the
-   Buffalo–Niagara region. Warm newsprint, near-black ink, one grave brick-red
-   accent (brick & steel), serif display against humanist sans for data. */
+/* ── "The Control Room" ───────────────────────────────────────────────────────
+   An industrial mission-control treatment for a somber public record: layoffs in
+   the Buffalo–Niagara region. Near-black charcoal, steel structure, signal-amber
+   for the running readout, critical-red for plant closings, cool steel-cyan for
+   the unemployment trace. Heavy industrial grotesque (Archivo) against monospace
+   instrumentation (IBM Plex Mono); prose in IBM Plex Sans.
+
+   Implementation note: the original "broadsheet" token *keys* are kept so every
+   existing utility class inverts for free; only their values change. Read the
+   role column, not the legacy name. */
 @theme {
-  --color-paper: #f3efe6;
-  --color-paper-raised: #faf8f2;
-  --color-paper-sunk: #ebe6d9;
-  --color-ink: #1a1916;
-  --color-ink-soft: #45423b;
-  --color-ink-faint: #847d6f;
-  --color-rule: #d6cfbf;
-  --color-rule-strong: #a89f8b;
+  /* surfaces — dark control panel */
+  --color-paper: #121311; /* page base */
+  --color-paper-raised: #1c1e1a; /* module / panel surface */
+  --color-paper-sunk: #0d0e0c; /* recessed meter wells */
 
-  --color-brick: #8c2f23;
-  --color-brick-soft: #a8493a;
-  --color-brick-wash: #efe2dd;
-  --color-steel: #33424f;
-  --color-steel-soft: #5b6b78;
-  --color-amber: #8a5a12;
+  /* signal text — off-white at three dim levels */
+  --color-ink: #e9e7df; /* primary readout */
+  --color-ink-soft: #b0b1a7; /* secondary */
+  --color-ink-faint: #6f7168; /* labels / ticks */
 
-  --font-display: "Iowan Old Style", "Palatino Linotype", "Palatino", "Book Antiqua",
-    Georgia, serif;
-  --font-sans: "Avenir Next", "Helvetica Neue", ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", Roboto, sans-serif;
-  --font-mono: "SFMono-Regular", ui-monospace, "Cascadia Mono", Menlo, monospace;
+  /* steel structure */
+  --color-rule: #2b2e29; /* hairline */
+  --color-rule-strong: #41453d; /* strong border / registration ticks */
+
+  /* critical-red — plant closings, danger, headline accent */
+  --color-brick: #d2483a;
+  --color-brick-soft: #b03f32;
+  --color-brick-wash: #2a1816;
+
+  /* steel-cyan — secondary data / unemployment trace */
+  --color-steel: #6f8794;
+  --color-steel-soft: #6fa0ad;
+
+  /* signal-amber — the primary running signal: layoffs, controls, links */
+  --color-amber: #e3a53c;
+
+  --font-display: "Archivo Variable", "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", "Cascadia Mono", Menlo, monospace;
 }
 
 html {
   background-color: var(--color-paper);
   color: var(--color-ink);
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  color-scheme: dark;
 }
 body {
   margin: 0;
 }
 
-/* Faint paper tooth — a barely-there fibrous wash, no loud texture. */
+/* Control-room atmosphere: a faint blueprint grid, hairline scanlines, a low
+   vignette to settle the eye on the panel. Replaces the old paper "tooth".
+   Layered, fixed, non-interactive, beneath #root. */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.5;
   background-image:
-    radial-gradient(circle at 18% 12%, rgba(140, 47, 35, 0.04), transparent 40%),
-    radial-gradient(circle at 82% 78%, rgba(51, 66, 79, 0.05), transparent 42%);
+    /* blueprint grid */
+    repeating-linear-gradient(
+      to right,
+      rgba(111, 135, 148, 0.05) 0,
+      rgba(111, 135, 148, 0.05) 1px,
+      transparent 1px,
+      transparent 64px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(111, 135, 148, 0.05) 0,
+      rgba(111, 135, 148, 0.05) 1px,
+      transparent 1px,
+      transparent 64px
+    ),
+    /* vignette */
+    radial-gradient(120% 90% at 50% 0%, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+}
+/* Hairline scanlines — separate layer so they can be silenced for reduced motion
+   sensitivity without losing the grid. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.18) 0,
+    rgba(0, 0, 0, 0.18) 1px,
+    transparent 1px,
+    transparent 3px
+  );
 }
 #root {
   position: relative;
@@ -61,13 +110,13 @@ body::before {
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum";
   }
-  /* Small-caps overline label that titles every section, broadsheet style. */
+  /* Mono instrument label that titles every module. */
   .kicker {
-    font-family: var(--font-sans);
+    font-family: var(--font-mono);
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.22em;
     font-size: 0.6875rem;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--color-ink-faint);
   }
   .rule-hair {
@@ -76,17 +125,87 @@ body::before {
   .rule-ink {
     border-color: var(--color-ink);
   }
-  /* Drop-cap-ish large serif numerals for the headline figures. */
+  /* Big monospace readout for headline figures — the instrument numerals. */
   .figure {
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     font-variant-numeric: tabular-nums lining-nums;
-    line-height: 0.9;
-    letter-spacing: -0.02em;
+    font-feature-settings: "tnum";
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+  /* Heavy industrial-grotesque headline, stamped-signage style. */
+  .stamp {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  /* A framed control-panel module with corner registration ticks. */
+  .panel {
+    position: relative;
+    border: 1px solid var(--color-rule);
+    background-color: color-mix(in srgb, var(--color-paper-raised) 70%, transparent);
+  }
+  .panel::before,
+  .panel::after {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-color: var(--color-rule-strong);
+    border-style: solid;
+  }
+  .panel::before {
+    top: -1px;
+    left: -1px;
+    border-width: 1px 0 0 1px;
+  }
+  .panel::after {
+    bottom: -1px;
+    right: -1px;
+    border-width: 0 1px 1px 0;
+  }
+  /* Segmented "████░░░░" magnitude meter. Drive --fill (0–100) inline.
+     Filled portion is signal-amber blocks; track is the recessed well. */
+  .segment {
+    --fill: 0;
+    --seg: 6px;
+    --gap: 2px;
+    position: relative;
+    background-color: var(--color-paper-sunk);
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--color-rule) 0,
+      var(--color-rule) var(--seg),
+      transparent var(--seg),
+      transparent calc(var(--seg) + var(--gap))
+    );
+  }
+  .segment > span {
+    display: block;
+    height: 100%;
+    width: calc(var(--fill) * 1%);
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--bar, var(--color-amber)) 0,
+      var(--bar, var(--color-amber)) var(--seg),
+      transparent var(--seg),
+      transparent calc(var(--seg) + var(--gap))
+    );
+  }
+  /* Restrained signal glow on a single primary readout. */
+  .glow {
+    text-shadow: 0 0 18px color-mix(in srgb, var(--color-amber) 45%, transparent);
+  }
+  /* A blinking status indicator dot ("● LIVE"). */
+  .pulse {
+    animation: signal-pulse 2.4s ease-in-out infinite;
   }
 }
 
-/* Staggered, dignified page-load reveal — slow fade + slight rise, no bounce. */
-@keyframes ledger-rise {
+/* Staggered, dignified module power-on — slow fade + slight rise, no bounce. */
+@keyframes panel-boot {
   from {
     opacity: 0;
     transform: translateY(8px);
@@ -96,19 +215,37 @@ body::before {
     transform: translateY(0);
   }
 }
+@keyframes signal-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
 .reveal {
-  animation: ledger-rise 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation: panel-boot 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     animation: none;
   }
+  .pulse {
+    animation: none;
+  }
+  .glow {
+    text-shadow: none;
+  }
+  body::after {
+    display: none;
+  }
 }
 
-/* Recharts: strip its defaults back to hairline-newspaper styling. */
+/* Recharts: retune defaults to the dark panel. */
 .recharts-cartesian-axis-tick text {
   fill: var(--color-ink-faint);
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   font-size: 11px;
 }
 .recharts-cartesian-grid line {

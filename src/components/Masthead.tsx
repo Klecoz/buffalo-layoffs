@@ -9,25 +9,30 @@ export function Masthead({ meta }: { meta: DatasetMeta | null }) {
   const generated = meta ? formatDate(meta.generatedAt.slice(0, 10), { long: true }) : "—";
 
   return (
-    <header className="reveal border-b-2 border-ink pt-8 pb-4">
-      {/* top dateline rule */}
-      <div className="flex items-center justify-between border-b border-rule pb-2 text-ink-faint">
-        <span className="kicker">Erie &amp; Niagara Counties · New York</span>
-        <span className="kicker hidden sm:block">Compiled from NYS WARN Act filings</span>
-        <span className="kicker">Updated {generated}</span>
+    <header className="reveal pt-8">
+      {/* instrument status strip */}
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-y border-rule py-2 text-ink-faint">
+        <span className="kicker">Erie &amp; Niagara Counties · NY</span>
+        <span className="kicker hidden sm:block">NYS WARN Act filings</span>
+        <span className="kicker flex items-center gap-1.5 text-amber">
+          <span className="pulse inline-block h-1.5 w-1.5 rounded-full bg-amber" aria-hidden />
+          Updated {generated}
+        </span>
       </div>
 
-      <h1 className="font-display text-ink text-[2.6rem] leading-[0.98] tracking-tight mt-5 sm:text-6xl">
-        The Buffalo–Niagara
+      <h1 className="stamp mt-6 text-[2.4rem] leading-[0.92] text-ink sm:text-[4rem]">
+        Buffalo–Niagara
         <br />
-        <span className="text-brick">Layoffs Ledger</span>
+        <span className="text-brick">Layoffs Monitor</span>
       </h1>
 
-      <p className="mt-4 max-w-2xl font-sans text-[0.95rem] leading-relaxed text-ink-soft">
+      <p className="mt-4 max-w-2xl font-sans text-[0.92rem] leading-relaxed text-ink-soft">
         A standing record of mass layoffs and plant closings across Western New York's two core
         counties, drawn from the legally-required notices employers file with the State before they
         cut jobs. Covering <span className="font-semibold text-ink">{range}</span>.
       </p>
+
+      <div className="mt-6 h-px w-full bg-rule-strong" />
     </header>
   );
 }

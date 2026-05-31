@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { type CSSProperties, useMemo } from "react";
 import { Bar, BarChart, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { useFilters } from "../context/FilterContext";
 import {
@@ -23,12 +23,19 @@ function StatCard({
   accent?: boolean;
 }) {
   return (
-    <div className="border-t-2 border-ink pt-3">
-      <div className="kicker mb-2">{label}</div>
-      <div className={`figure text-5xl sm:text-[3.4rem] ${accent ? "text-brick" : "text-ink"}`}>
+    <div className="panel px-4 py-3.5">
+      <div className="kicker mb-2 flex items-center gap-1.5">
+        <span className={accent ? "text-amber" : "text-ink-faint"}>{accent ? "▮" : "▯"}</span>
+        {label}
+      </div>
+      <div
+        className={`figure text-5xl sm:text-[3.4rem] ${accent ? "text-amber glow" : "text-ink"}`}
+      >
         {figure}
       </div>
-      {sub && <div className="mt-2 text-[0.8rem] leading-snug text-ink-faint">{sub}</div>}
+      {sub && (
+        <div className="mt-2 font-mono text-[0.72rem] leading-snug text-ink-faint">{sub}</div>
+      )}
     </div>
   );
 }
@@ -49,8 +56,8 @@ function TrendTooltip({
   if (!active || !payload?.length) return null;
   const d = payload[0].payload;
   return (
-    <div className="border border-ink bg-paper-raised px-3 py-2 text-sm shadow-sm">
-      <div className="font-display text-ink">{formatMonth(d.month)}</div>
+    <div className="border border-rule-strong bg-paper-raised px-3 py-2 font-mono text-sm shadow-lg shadow-black/40">
+      <div className="text-amber">{formatMonth(d.month)}</div>
       <div className="nums text-ink-soft">
         {formatNumber(d.jobs)} jobs · {d.events} {d.events === 1 ? "notice" : "notices"}
       </div>
@@ -69,16 +76,16 @@ function BreakdownBars({
     <div className="flex flex-col gap-2.5">
       {rows.map((r) => (
         <div key={r.key} className="grid grid-cols-[9rem_1fr_auto] items-center gap-3">
-          <span className="truncate text-sm text-ink-soft" title={r.label}>
+          <span className="truncate font-mono text-[0.8rem] text-ink-soft" title={r.label}>
             {r.label}
           </span>
-          <span className="h-3 bg-paper-sunk">
-            <span
-              className="block h-full bg-steel/70"
-              style={{ width: `${max > 0 ? Math.max(2, (r.jobs / max) * 100) : 0}%` }}
-            />
+          <span
+            className="segment block h-3.5"
+            style={{ "--fill": max > 0 ? Math.max(2, (r.jobs / max) * 100) : 0 } as CSSProperties}
+          >
+            <span />
           </span>
-          <span className="nums w-20 text-right text-sm text-ink">
+          <span className="nums w-20 text-right font-mono text-sm text-ink">
             {formatNumber(r.jobs)}
             <span className="ml-1 text-ink-faint">({r.events})</span>
           </span>
@@ -143,14 +150,14 @@ export function StatsView() {
                 }
                 interval="preserveStartEnd"
                 minTickGap={24}
-                axisLine={{ stroke: "var(--color-ink)" }}
+                axisLine={{ stroke: "var(--color-rule-strong)" }}
                 tickLine={false}
               />
               <YAxis axisLine={false} tickLine={false} width={36} />
-              <Tooltip content={<TrendTooltip />} cursor={{ fill: "var(--color-paper-sunk)" }} />
+              <Tooltip content={<TrendTooltip />} cursor={{ fill: "var(--color-paper-raised)" }} />
               <Bar dataKey="jobs" radius={[1, 1, 0, 0]}>
                 {trend.map((d) => (
-                  <Cell key={d.month} fill="var(--color-brick)" />
+                  <Cell key={d.month} fill="var(--color-amber)" />
                 ))}
               </Bar>
             </BarChart>
@@ -183,17 +190,19 @@ export function StatsView() {
           {biggest.map((e, i) => (
             <li
               key={e.id}
-              className="grid grid-cols-[2rem_1fr_auto] items-baseline gap-3 border-b border-rule py-2.5"
+              className="grid grid-cols-[1.75rem_1fr_auto] items-baseline gap-3 border-b border-rule py-2.5"
             >
-              <span className="figure text-xl text-ink-faint">{i + 1}</span>
+              <span className="figure text-base text-ink-faint">
+                {String(i + 1).padStart(2, "0")}
+              </span>
               <span>
-                <span className="font-display text-lg text-ink">{e.company}</span>
-                <span className="ml-2 text-[0.78rem] text-ink-faint">
+                <span className="font-sans text-[1.05rem] font-semibold text-ink">{e.company}</span>
+                <span className="ml-2 font-mono text-[0.72rem] text-ink-faint">
                   {e.county !== "unknown" ? `${e.county} Co. · ` : ""}
                   {formatDate(e.noticeDate)}
                 </span>
               </span>
-              <span className="figure text-2xl text-brick">{formatNumber(e.numberAffected)}</span>
+              <span className="figure text-2xl text-amber">{formatNumber(e.numberAffected)}</span>
             </li>
           ))}
           {biggest.length === 0 && <Kicker>No counted layoffs in view.</Kicker>}

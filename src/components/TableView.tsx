@@ -6,21 +6,38 @@ import {
   type SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import { useMemo, useState } from "react";
+import { type CSSProperties, useMemo, useState } from "react";
 import type { LayoffEvent } from "../../shared/types";
 import { useFilters } from "../context/FilterContext";
 import { formatDate, formatNumber } from "../lib/format";
 import { ClassificationTag, IncompleteBadge, SourceBadge } from "./ui";
 
-function MagnitudeCell({ value, max }: { value: number | null; max: number }) {
+function MagnitudeCell({
+  value,
+  total,
+  max,
+}: {
+  value: number | null;
+  total: number | null;
+  max: number;
+}) {
   if (value == null) return <IncompleteBadge />;
   const pct = max > 0 ? Math.max(2, (value / max) * 100) : 0;
   return (
-    <div className="flex items-center justify-end gap-2">
-      <span className="nums font-display text-base text-ink">{formatNumber(value)}</span>
-      <span className="hidden h-2 w-16 bg-paper-sunk sm:block" aria-hidden>
-        <span className="block h-full bg-brick/80" style={{ width: `${pct}%` }} />
-      </span>
+    <div className="flex flex-col items-end gap-0.5">
+      <div className="flex items-center justify-end gap-2.5">
+        <span className="figure text-base text-amber">{formatNumber(value)}</span>
+        <span
+          className="segment hidden h-2 w-16 sm:block"
+          style={{ "--fill": pct, "--seg": "4px", "--gap": "2px" } as CSSProperties}
+          aria-hidden
+        >
+          <span />
+        </span>
+      </div>
+      {total != null && (
+        <span className="text-[0.66rem] text-ink-faint">of {formatNumber(total)} on site</span>
+      )}
     </div>
   );
 }
@@ -28,13 +45,13 @@ function MagnitudeCell({ value, max }: { value: number | null; max: number }) {
 function CompanyCell({ e }: { e: LayoffEvent }) {
   return (
     <div className="flex flex-col gap-1">
-      <span className="font-display text-[1.05rem] leading-tight text-ink">
+      <span className="font-sans text-[1rem] font-semibold leading-tight text-ink">
         {e.sourceUrl ? (
           <a
             href={e.sourceUrl}
             target="_blank"
             rel="noreferrer"
-            className="decoration-rule-strong underline-offset-2 hover:underline hover:decoration-brick"
+            className="decoration-rule-strong underline-offset-2 hover:text-amber hover:underline hover:decoration-amber"
           >
             {e.company}
           </a>
@@ -44,6 +61,11 @@ function CompanyCell({ e }: { e: LayoffEvent }) {
       </span>
       <div className="flex flex-wrap items-center gap-1.5">
         <SourceBadge source={e.source} />
+        {e.union && (
+          <span className="inline-block border border-steel/40 px-1.5 py-0.5 font-mono text-[0.6rem] uppercase tracking-[0.1em] text-steel">
+            {e.union}
+          </span>
+        )}
         {e.reason && <span className="text-[0.72rem] text-ink-faint">{e.reason}</span>}
       </div>
     </div>
@@ -86,27 +108,51 @@ export function TableView() {
       {
         accessorKey: "numberAffected",
         header: "Jobs",
-        cell: ({ row }) => <MagnitudeCell value={row.original.numberAffected} max={maxAffected} />,
+        cell: ({ row }) => (
+          <MagnitudeCell
+            value={row.original.numberAffected}
+            total={row.original.totalEmployees}
+            max={maxAffected}
+          />
+        ),
         sortUndefined: "last",
         sortingFn: (a, b) => (a.original.numberAffected ?? -1) - (b.original.numberAffected ?? -1),
       },
       {
         accessorKey: "noticeDate",
         header: "Notice",
-        cell: ({ getValue }) => (
-          <span className="nums whitespace-nowrap text-sm text-ink-soft">
-            {formatDate(getValue<string>())}
-          </span>
+        cell: ({ row }) => (
+          <div className="flex flex-col">
+            <span className="nums whitespace-nowrap text-sm text-ink-soft">
+              {formatDate(row.original.noticeDate)}
+            </span>
+            {row.original.datePosted && row.original.datePosted !== row.original.noticeDate && (
+              <span className="whitespace-nowrap text-[0.66rem] text-ink-faint">
+                posted {formatDate(row.original.datePosted)}
+              </span>
+            )}
+          </div>
         ),
       },
       {
         accessorKey: "layoffDate",
         header: "Effective",
-        cell: ({ getValue }) => (
-          <span className="nums whitespace-nowrap text-sm text-ink-faint">
-            {formatDate(getValue<string | null>())}
-          </span>
-        ),
+        cell: ({ row }) => {
+          const { layoffDate, closingDate } = row.original;
+          const primary = layoffDate ?? closingDate;
+          return (
+            <div className="flex flex-col">
+              <span className="nums whitespace-nowrap text-sm text-ink-faint">
+                {formatDate(primary)}
+              </span>
+              {closingDate && closingDate !== primary && (
+                <span className="whitespace-nowrap text-[0.66rem] text-ink-faint">
+                  closes {formatDate(closingDate)}
+                </span>
+              )}
+            </div>
+          );
+        },
       },
       {
         accessorKey: "classification",
@@ -130,7 +176,7 @@ export function TableView() {
     <div className="reveal overflow-x-auto">
       <table className="w-full border-collapse text-left">
         <thead>
-          <tr className="border-b-2 border-ink">
+          <tr className="border-b border-rule-strong">
             {table.getHeaderGroups()[0].headers.map((header) => {
               const sorted = header.column.getIsSorted();
               const isNum = header.column.id === "numberAffected";
@@ -172,7 +218,7 @@ export function TableView() {
         </tbody>
       </table>
       {filtered.length === 0 && (
-        <p className="py-10 text-center font-display text-lg text-ink-faint">
+        <p className="py-10 text-center font-mono text-sm uppercase tracking-[0.18em] text-ink-faint">
           No notices match these filters.
         </p>
       )}
