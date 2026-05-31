@@ -80,8 +80,11 @@ export function withinWindow(e: LayoffEvent, since = DATE_WINDOW_START): boolean
   return e.noticeDate >= since;
 }
 
+// The per-notice WARN PDF carries the authoritative notice-level total, so it
+// outranks the Tableau dashboard (which splits a notice across per-site rows and
+// can undercount). Curated news is the least authoritative.
 const SOURCE_RANK: Record<SourceKind, number> = {
-  warn_pdf: 3,
+  warn_pdf: 4,
   tableau_csv: 3,
   tableau_live: 3,
   curated_news: 1,
