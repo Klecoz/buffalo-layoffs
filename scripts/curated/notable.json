@@ -1,0 +1,38 @@
+[
+  {
+    "company": "Allen Burger Venture",
+    "county": "Erie",
+    "numberAffected": null,
+    "noticeDate": "2026-01-02",
+    "layoffDate": "2026-01-31",
+    "classification": "plant_closing",
+    "reason": "ongoing challenges of operating a small independent restaurant",
+    "industry": "Restaurant / food service",
+    "sourceUrl": "https://spectrumlocalnews.com/nys/buffalo/news/2026/01/02/allen-burger-venture-to-shutdown-at-end-of-january",
+    "note": "Spectrum News: the Allentown burger restaurant will permanently close Jan 31, 2026. Below WARN threshold; not in DOL data."
+  },
+  {
+    "company": "Flying Bison Brewing Company",
+    "county": "Erie",
+    "numberAffected": null,
+    "noticeDate": "2025-11-11",
+    "layoffDate": "2025-11-29",
+    "classification": "plant_closing",
+    "reason": "brand and recipes sold to Hamburg Brewing Company",
+    "industry": "Craft brewing / hospitality",
+    "sourceUrl": "https://www.buffalorising.com/2025/11/fx-matt-brewing-company-announces-sale-of-flying-bison-brewing-brands-to-hamburg-brewing-company/",
+    "note": "Buffalo Rising: Flying Bison's Buffalo taproom closed Nov 29, 2025 after FX Matt sold the brand. Below WARN threshold; not in DOL data."
+  },
+  {
+    "company": "Oldcastle APG",
+    "county": "Erie",
+    "numberAffected": 93,
+    "noticeDate": "2025-02-11",
+    "layoffDate": "2025-05-05",
+    "classification": "plant_closing",
+    "reason": "economic",
+    "industry": "Building materials / manufacturing",
+    "sourceUrl": "https://www.yahoo.com/news/100-lose-jobs-manufacturing-plant-205703487.html",
+    "note": "WIVB/Yahoo: Oldcastle APG's fencing & decking plant at Buffalo Lakeside Commerce Park is closing, 93 jobs, layoffs from May 5, 2025."
+  }
+]
