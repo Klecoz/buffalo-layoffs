@@ -1,0 +1,51 @@
+{
+  "name": "buffalo-layoffs",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A local tracker of recent mass layoffs in the Buffalo–Niagara area, built from NYS WARN Act notices.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "biome check src scripts shared",
+    "lint:fix": "biome check --write src scripts shared",
+    "refresh-data": "tsx scripts/refresh.ts",
+    "refresh:index": "tsx scripts/scrape-index.ts",
+    "refresh:pdfs": "tsx scripts/fetch-pdfs.ts",
+    "refresh:parse": "tsx scripts/parse-pdf.ts",
+    "refresh:tableau": "tsx scripts/ingest-tableau.ts",
+    "refresh:fred": "tsx scripts/ingest-fred.ts",
+    "refresh:normalize": "tsx scripts/normalize.ts"
+  },
+  "dependencies": {
+    "@tanstack/react-table": "^8.21.3",
+    "date-fns": "^4.4.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "recharts": "^3.8.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.16",
+    "@tailwindcss/vite": "^4.3.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^25.9.1",
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
+    "cheerio": "^1.2.0",
+    "jsdom": "^29.1.1",
+    "pdfjs-dist": "^6.0.227",
+    "tailwindcss": "^4.3.0",
+    "tsx": "^4.22.3",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.14",
+    "vitest": "^4.1.7"
+  }
+}

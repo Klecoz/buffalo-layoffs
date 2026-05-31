@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* ── Editorial / data-journalism design tokens ───────────────────────────────
+   A restrained, newsprint-inspired palette. Warm paper, near-black ink, a
+   single grave accent (brick red) reserved for emphasis. Serif display type
+   for gravity; humanist sans for data. */
+@theme {
+  --color-paper: #f6f3ec;
+  --color-paper-raised: #fbf9f4;
+  --color-ink: #1b1a17;
+  --color-ink-soft: #4a4742;
+  --color-ink-faint: #8a857c;
+  --color-rule: #d8d2c4;
+  --color-rule-strong: #b9b1a0;
+
+  --color-brick: #8c2f23;
+  --color-brick-soft: #b65647;
+  --color-slate: #3a4a5a;
+  --color-amber: #9a6a18;
+
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+    Georgia, serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, monospace;
+}
+
+html {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+}
+
+/* Tabular figures for all data numerals. */
+.nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
