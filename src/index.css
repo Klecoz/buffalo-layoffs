@@ -1,28 +1,31 @@
 @import "tailwindcss";
 
-/* ── Editorial / data-journalism design tokens ───────────────────────────────
-   A restrained, newsprint-inspired palette. Warm paper, near-black ink, a
-   single grave accent (brick red) reserved for emphasis. Serif display type
-   for gravity; humanist sans for data. */
+/* ── "The Ledger" — a Rust Belt broadsheet ───────────────────────────────────
+   A newspaper-of-record treatment for a somber public record: layoffs in the
+   Buffalo–Niagara region. Warm newsprint, near-black ink, one grave brick-red
+   accent (brick & steel), serif display against humanist sans for data. */
 @theme {
-  --color-paper: #f6f3ec;
-  --color-paper-raised: #fbf9f4;
-  --color-ink: #1b1a17;
-  --color-ink-soft: #4a4742;
-  --color-ink-faint: #8a857c;
-  --color-rule: #d8d2c4;
-  --color-rule-strong: #b9b1a0;
+  --color-paper: #f3efe6;
+  --color-paper-raised: #faf8f2;
+  --color-paper-sunk: #ebe6d9;
+  --color-ink: #1a1916;
+  --color-ink-soft: #45423b;
+  --color-ink-faint: #847d6f;
+  --color-rule: #d6cfbf;
+  --color-rule-strong: #a89f8b;
 
   --color-brick: #8c2f23;
-  --color-brick-soft: #b65647;
-  --color-slate: #3a4a5a;
-  --color-amber: #9a6a18;
+  --color-brick-soft: #a8493a;
+  --color-brick-wash: #efe2dd;
+  --color-steel: #33424f;
+  --color-steel-soft: #5b6b78;
+  --color-amber: #8a5a12;
 
-  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Palatino", "Book Antiqua",
     Georgia, serif;
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif;
-  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, monospace;
+  --font-sans: "Avenir Next", "Helvetica Neue", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  --font-mono: "SFMono-Regular", ui-monospace, "Cascadia Mono", Menlo, monospace;
 }
 
 html {
@@ -32,13 +35,85 @@ html {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-
 body {
   margin: 0;
 }
 
-/* Tabular figures for all data numerals. */
-.nums {
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum";
+/* Faint paper tooth — a barely-there fibrous wash, no loud texture. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(circle at 18% 12%, rgba(140, 47, 35, 0.04), transparent 40%),
+    radial-gradient(circle at 82% 78%, rgba(51, 66, 79, 0.05), transparent 42%);
+}
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+@layer utilities {
+  .nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+  /* Small-caps overline label that titles every section, broadsheet style. */
+  .kicker {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--color-ink-faint);
+  }
+  .rule-hair {
+    border-color: var(--color-rule);
+  }
+  .rule-ink {
+    border-color: var(--color-ink);
+  }
+  /* Drop-cap-ish large serif numerals for the headline figures. */
+  .figure {
+    font-family: var(--font-display);
+    font-variant-numeric: tabular-nums lining-nums;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Staggered, dignified page-load reveal — slow fade + slight rise, no bounce. */
+@keyframes ledger-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.reveal {
+  animation: ledger-rise 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none;
+  }
+}
+
+/* Recharts: strip its defaults back to hairline-newspaper styling. */
+.recharts-cartesian-axis-tick text {
+  fill: var(--color-ink-faint);
+  font-family: var(--font-sans);
+  font-size: 11px;
+}
+.recharts-cartesian-grid line {
+  stroke: var(--color-rule);
+}
+.recharts-tooltip-wrapper {
+  outline: none;
 }

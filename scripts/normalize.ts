@@ -10,13 +10,7 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import type {
-  Classification,
-  County,
-  DatasetMeta,
-  LayoffEvent,
-  SourceKind,
-} from "../shared/types.ts";
+import type { County, DatasetMeta, LayoffEvent, SourceKind } from "../shared/types.ts";
 import { loadCurated } from "./curated.ts";
 import { loadTableau } from "./ingest-tableau.ts";
 import { parseDate } from "./lib/dates.ts";

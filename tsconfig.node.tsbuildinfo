@@ -1,1 +1,1 @@
-{"root":["./shared/types.ts","./vite.config.ts"],"version":"6.0.3"}
+{"root":["./scripts/curated.ts","./scripts/fetch-pdfs.ts","./scripts/field-aliases.ts","./scripts/ingest-fred.ts","./scripts/ingest-tableau.ts","./scripts/normalize.test.ts","./scripts/normalize.ts","./scripts/parse-pdf.test.ts","./scripts/parse-pdf.ts","./scripts/refresh.ts","./scripts/scrape-index.ts","./scripts/lib/dates.ts","./scripts/lib/http.ts","./scripts/lib/ids.ts","./scripts/lib/pdf.ts","./shared/types.ts","./vite.config.ts"],"version":"6.0.3"}
