@@ -16,6 +16,7 @@ const STAGES = [
   ["fetch-pdfs.ts", "Downloading notice PDFs (cached)"],
   ["parse-pdf.ts", "Parsing PDF fields"],
   ["ingest-fred.ts", "Fetching FRED unemployment context"],
+  ["ingest-qcew.ts", "Fetching BLS QCEW county employment"],
   ["normalize.ts", "Merging, filtering, deduping → public/data"],
 ];
 

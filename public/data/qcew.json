@@ -1,0 +1,206 @@
+[
+  {
+    "areaFips": "36029",
+    "label": "Erie County — All industries",
+    "industryCode": "10",
+    "points": [
+      {
+        "date": "2023-01-01",
+        "employment": 382001
+      },
+      {
+        "date": "2023-04-01",
+        "employment": 390531
+      },
+      {
+        "date": "2023-07-01",
+        "employment": 392267
+      },
+      {
+        "date": "2023-10-01",
+        "employment": 393311
+      },
+      {
+        "date": "2024-01-01",
+        "employment": 387467
+      },
+      {
+        "date": "2024-04-01",
+        "employment": 397297
+      },
+      {
+        "date": "2024-07-01",
+        "employment": 394912
+      },
+      {
+        "date": "2024-10-01",
+        "employment": 396389
+      },
+      {
+        "date": "2025-01-01",
+        "employment": 386092
+      },
+      {
+        "date": "2025-04-01",
+        "employment": 396422
+      },
+      {
+        "date": "2025-07-01",
+        "employment": 396084
+      }
+    ]
+  },
+  {
+    "areaFips": "36029",
+    "label": "Erie County — Manufacturing",
+    "industryCode": "31-33",
+    "points": [
+      {
+        "date": "2023-01-01",
+        "employment": 45238
+      },
+      {
+        "date": "2023-04-01",
+        "employment": 45285
+      },
+      {
+        "date": "2023-07-01",
+        "employment": 45582
+      },
+      {
+        "date": "2023-10-01",
+        "employment": 45476
+      },
+      {
+        "date": "2024-01-01",
+        "employment": 44796
+      },
+      {
+        "date": "2024-04-01",
+        "employment": 44825
+      },
+      {
+        "date": "2024-07-01",
+        "employment": 44444
+      },
+      {
+        "date": "2024-10-01",
+        "employment": 44041
+      },
+      {
+        "date": "2025-01-01",
+        "employment": 43126
+      },
+      {
+        "date": "2025-04-01",
+        "employment": 42248
+      },
+      {
+        "date": "2025-07-01",
+        "employment": 42073
+      }
+    ]
+  },
+  {
+    "areaFips": "36063",
+    "label": "Niagara County — All industries",
+    "industryCode": "10",
+    "points": [
+      {
+        "date": "2023-01-01",
+        "employment": 53009
+      },
+      {
+        "date": "2023-04-01",
+        "employment": 55596
+      },
+      {
+        "date": "2023-07-01",
+        "employment": 56335
+      },
+      {
+        "date": "2023-10-01",
+        "employment": 55049
+      },
+      {
+        "date": "2024-01-01",
+        "employment": 53304
+      },
+      {
+        "date": "2024-04-01",
+        "employment": 56121
+      },
+      {
+        "date": "2024-07-01",
+        "employment": 56258
+      },
+      {
+        "date": "2024-10-01",
+        "employment": 55247
+      },
+      {
+        "date": "2025-01-01",
+        "employment": 53745
+      },
+      {
+        "date": "2025-04-01",
+        "employment": 55981
+      },
+      {
+        "date": "2025-07-01",
+        "employment": 56800
+      }
+    ]
+  },
+  {
+    "areaFips": "36063",
+    "label": "Niagara County — Manufacturing",
+    "industryCode": "31-33",
+    "points": [
+      {
+        "date": "2023-01-01",
+        "employment": 8576
+      },
+      {
+        "date": "2023-04-01",
+        "employment": 8561
+      },
+      {
+        "date": "2023-07-01",
+        "employment": 8562
+      },
+      {
+        "date": "2023-10-01",
+        "employment": 8435
+      },
+      {
+        "date": "2024-01-01",
+        "employment": 8383
+      },
+      {
+        "date": "2024-04-01",
+        "employment": 8440
+      },
+      {
+        "date": "2024-07-01",
+        "employment": 8375
+      },
+      {
+        "date": "2024-10-01",
+        "employment": 8275
+      },
+      {
+        "date": "2025-01-01",
+        "employment": 8012
+      },
+      {
+        "date": "2025-04-01",
+        "employment": 7974
+      },
+      {
+        "date": "2025-07-01",
+        "employment": 7889
+      }
+    ]
+  }
+]

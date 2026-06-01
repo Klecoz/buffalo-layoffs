@@ -1,10 +1,11 @@
 import { createContext, type ReactNode, useContext, useEffect, useState } from "react";
-import type { DatasetMeta, LayoffEvent, UnemploymentSeries } from "../../shared/types";
+import type { DatasetMeta, LayoffEvent, QcewSeries, UnemploymentSeries } from "../../shared/types";
 
 interface DataState {
   events: LayoffEvent[];
   meta: DatasetMeta | null;
   unemployment: UnemploymentSeries[];
+  qcew: QcewSeries[];
   loading: boolean;
   error: string | null;
 }
@@ -24,6 +25,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
     events: [],
     meta: null,
     unemployment: [],
+    qcew: [],
     loading: true,
     error: null,
   });
@@ -34,10 +36,11 @@ export function DataProvider({ children }: { children: ReactNode }) {
       loadJson<LayoffEvent[]>("data/layoffs.json"),
       loadJson<DatasetMeta>("data/meta.json"),
       loadJson<UnemploymentSeries[]>("data/unemployment.json").catch(() => []),
+      loadJson<QcewSeries[]>("data/qcew.json").catch(() => []),
     ])
-      .then(([events, meta, unemployment]) => {
+      .then(([events, meta, unemployment, qcew]) => {
         if (!active) return;
-        setState({ events, meta, unemployment, loading: false, error: null });
+        setState({ events, meta, unemployment, qcew, loading: false, error: null });
       })
       .catch((err: unknown) => {
         if (!active) return;

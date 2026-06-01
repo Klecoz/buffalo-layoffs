@@ -117,7 +117,7 @@ const DAY = 86_400_000;
 const AMENDMENT_WINDOW_DAYS = 1;
 const SAME_COUNT_WINDOW_DAYS = 120;
 
-function sameEvent(a: LayoffEvent, b: LayoffEvent): boolean {
+export function sameEvent(a: LayoffEvent, b: LayoffEvent): boolean {
   if (companyKey(a.company) !== companyKey(b.company)) return false;
   if (a.county !== b.county && a.county !== "unknown" && b.county !== "unknown") return false;
   const da = Date.parse(a.noticeDate);

@@ -88,6 +88,30 @@
     "parseWarnings": []
   },
   {
+    "id": "da90c3c44695",
+    "company": "Kaleida Health (Buffalo General Medical Rehabilitation Unit)",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": 22,
+    "totalEmployees": null,
+    "noticeDate": "2026-02-17",
+    "datePosted": null,
+    "layoffDate": null,
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "proposed 50% rehab-bed reduction (34 to 16) under Kaleida's $200M plan",
+    "industry": "Healthcare / inpatient rehabilitation",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.beckershospitalreview.com/uncategorized/new-york-hospital-to-reduce-rehab-beds-affecting-22-employees/",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "Becker's: 22 positions affected; PROPOSED, pending NYSDOH approval as of Feb 2026."
+    ]
+  },
+  {
     "id": "9e917ee4d8ce",
     "company": "McKesson",
     "county": "Erie",
@@ -108,6 +132,30 @@
     "sourceUrl": "https://dol.ny.gov/warn-dashboard",
     "dataQuality": "complete",
     "parseWarnings": []
+  },
+  {
+    "id": "010933242f34",
+    "company": "Erie County Medical Center (ECMC)",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": 150,
+    "totalEmployees": null,
+    "noticeDate": "2026-01-29",
+    "datePosted": null,
+    "layoffDate": "2026-03-31",
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "inadequate Medicaid/payer reimbursements, inflation, financial pressures",
+    "industry": "Healthcare / public hospital",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.wkbw.com/news/local-news/ecmc-to-lay-off-around-150-employees",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "WGRZ: ~150 layoffs (3% of workforce), mostly non-clinical, plus management furloughs. Large enough to file a WARN; watch for a future WARN duplicate."
+    ]
   },
   {
     "id": "68307f8a1ef3",
@@ -180,6 +228,78 @@
     ]
   },
   {
+    "id": "f60d23a23fa8",
+    "company": "Buffalo Medical Group",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": 22,
+    "totalEmployees": null,
+    "noticeDate": "2025-11-01",
+    "datePosted": null,
+    "layoffDate": "2025-12-31",
+    "closingDate": "2025-12-31",
+    "classification": "plant_closing",
+    "reason": "insurance reimbursement reductions made lab operations unviable",
+    "industry": "Healthcare / clinical laboratory",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.wgrz.com/article/news/local/williamsville/buffalo-medical-group-to-close-its-labs-by-the-end-of-the-year/71-62f0ec25-4bd0-46a2-9350-d760e5edca80",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "WGRZ: closing all four clinical labs by end of 2025, affecting 22 lab employees."
+    ]
+  },
+  {
+    "id": "9808af5a6cdc",
+    "company": "Kaleida Health (Family Planning Center)",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": null,
+    "totalEmployees": null,
+    "noticeDate": "2025-10-09",
+    "datePosted": null,
+    "layoffDate": "2025-11-24",
+    "closingDate": "2025-11-24",
+    "classification": "plant_closing",
+    "reason": "rising costs, staffing shortages, anticipated federal Medicaid cuts",
+    "industry": "Healthcare / family planning",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.wivb.com/news/local-news/buffalo/kaleida-healths-family-planning-center-to-close-later-this-year/",
+    "dataQuality": "incomplete",
+    "parseWarnings": [
+      "WIVB: Main St. Buffalo Family Planning Center closing Nov 24, 2025; headcount not disclosed, so null."
+    ]
+  },
+  {
+    "id": "835e733cfa2c",
+    "company": "The Buffalo News (Lee Enterprises) (2025 round)",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": 5,
+    "totalEmployees": null,
+    "noticeDate": "2025-09-19",
+    "datePosted": null,
+    "layoffDate": "2025-11-01",
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "continued Lee Enterprises cost-cutting",
+    "industry": "News media / journalism",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.investigativepost.org/2025/09/19/more-cuts-coming-at-the-buffalo-news/",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "Investigative Post: up to 5 more newsroom cuts effective early Nov 2025."
+    ]
+  },
+  {
     "id": "74c2b120c406",
     "company": "Pinnacle City Living, LLC.",
     "county": "Erie",
@@ -202,6 +322,54 @@
     "parseWarnings": []
   },
   {
+    "id": "03e6748e8cba",
+    "company": "Kaleida Health (Millard Fillmore Surgery Center)",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": 32,
+    "totalEmployees": null,
+    "noticeDate": "2025-09-12",
+    "datePosted": null,
+    "layoffDate": "2025-10-01",
+    "closingDate": "2025-10-01",
+    "classification": "plant_closing",
+    "reason": "federal Medicaid funding reductions and financial sustainability",
+    "industry": "Healthcare / ambulatory surgery",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://spectrumlocalnews.com/nys/buffalo/news/2025/09/12/millard-fillmore-surgery-center-to-close-at-end-of-month",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "Spectrum News: Amherst surgery center closing Oct 1, 2025, 32 employees affected."
+    ]
+  },
+  {
+    "id": "e71d0b7d71ae",
+    "company": "Kaleida Health (ENT Center, Buffalo General)",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": null,
+    "totalEmployees": null,
+    "noticeDate": "2025-09-01",
+    "datePosted": null,
+    "layoffDate": "2025-12-31",
+    "closingDate": "2025-12-31",
+    "classification": "plant_closing",
+    "reason": "federal Medicaid funding reductions",
+    "industry": "Healthcare",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.wkbw.com/news/local-news/northtowns/keep-these-places-open-kaleida-health-closes-more-facilities-leaving-workers-and-patients-concerned-about-healthcare-access",
+    "dataQuality": "incomplete",
+    "parseWarnings": [
+      "WKBW: Ear-Nose-Throat Center at Buffalo General closing among late-2025 service shutdowns; headcount not published, so null."
+    ]
+  },
+  {
     "id": "163786704d2b",
     "company": "Aurora Cares, LLC. d/b/a Tara Cares",
     "county": "Erie",
@@ -222,6 +390,78 @@
     "sourceUrl": "https://dol.ny.gov/warn-dashboard",
     "dataQuality": "complete",
     "parseWarnings": []
+  },
+  {
+    "id": "c989b0e3cbf1",
+    "company": "Kaleida Health (Buffalo Therapy Services)",
+    "county": "unknown",
+    "region": "Western",
+    "numberAffected": 31,
+    "totalEmployees": null,
+    "noticeDate": "2025-08-22",
+    "datePosted": null,
+    "layoffDate": "2025-11-10",
+    "closingDate": "2025-11-10",
+    "classification": "plant_closing",
+    "reason": "federal Medicaid funding reductions and financial viability",
+    "industry": "Healthcare / outpatient therapy",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.wkbw.com/news/local-news/buffalo/kaleida-health-to-close-two-buffalo-therapy-services-clinics-due-to-federal-healthcare-cuts",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "WKBW: two clinics closing (Amherst/Erie and North Tonawanda/Niagara), 31 affected; spans both counties, so county is unknown."
+    ]
+  },
+  {
+    "id": "00008870926f",
+    "company": "Independent Health (second round)",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": 59,
+    "totalEmployees": null,
+    "noticeDate": "2025-08-20",
+    "datePosted": null,
+    "layoffDate": null,
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "rising drug costs, healthcare use, and anticipated federal Medicaid/Medicare cuts",
+    "industry": "Health insurance",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.wgrz.com/article/news/health/independent-health-cuts-nearly-60-jobs-as-costs-rise-and-funding-falls/71-5776ca4f-4259-4ff5-aeb5-5c1ecb2a0164",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "WGRZ: second round at Amherst HQ, ~59 positions (IT, claims, marketing); all confirmed local."
+    ]
+  },
+  {
+    "id": "0963b6ae710f",
+    "company": "Catholic Diocese of Buffalo",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": 18,
+    "totalEmployees": null,
+    "noticeDate": "2025-08-06",
+    "datePosted": null,
+    "layoffDate": "2025-08-31",
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "Chapter 11 bankruptcy restructuring after a $150M clergy-abuse settlement",
+    "industry": "Religious organization / nonprofit",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://spectrumlocalnews.com/nys/buffalo/news/2025/08/06/buffalo-diocese-to-cut-staff-by-22--in-latest-cost-saving-measure",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "Spectrum News: 18 of 75 Catholic Center staff (22%) cut; communications department eliminated."
+    ]
   },
   {
     "id": "0659de05569a",
@@ -266,6 +506,54 @@
     "sourceUrl": "https://dol.ny.gov/warn-dashboard",
     "dataQuality": "complete",
     "parseWarnings": []
+  },
+  {
+    "id": "138ea3454674",
+    "company": "Erie County Department of Health (PHEP program)",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": null,
+    "totalEmployees": null,
+    "noticeDate": "2025-05-30",
+    "datePosted": null,
+    "layoffDate": null,
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "federal cut to the Public Health Emergency Preparedness (PHEP) program",
+    "industry": "Government / public health",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://spectrumlocalnews.com/nys/buffalo/news/2025/05/30/federal-cuts-lead-to-layoffs-at-erie-county-department-of-health",
+    "dataQuality": "incomplete",
+    "parseWarnings": [
+      "Spectrum News: PHEP-funded preparedness team lost jobs after a federal funding cut; exact count not stated, so null."
+    ]
+  },
+  {
+    "id": "970aab85a9f4",
+    "company": "Buffalo State University",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": 63,
+    "totalEmployees": null,
+    "noticeDate": "2025-05-23",
+    "datePosted": null,
+    "layoffDate": null,
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "$17.5M projected deficit and a decade of ~45% enrollment decline",
+    "industry": "Higher education",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://spectrumlocalnews.com/nys/buffalo/news/2025/05/23/buffalo-state-university-to-end-programs--eyes-potential-job-cuts",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "Spectrum News: up to 63 full-time positions and 19 academic programs eliminated. As a SUNY campus, WARN handling differs; watch for a possible WARN duplicate."
+    ]
   },
   {
     "id": "809530d4a983",
@@ -356,6 +644,30 @@
     "parseWarnings": []
   },
   {
+    "id": "124f97c5dbe9",
+    "company": "Fisher-Price (Mattel) (second round)",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": null,
+    "totalEmployees": null,
+    "noticeDate": "2025-04-03",
+    "datePosted": null,
+    "layoffDate": null,
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "Mattel 'Optimizing for Profitable Growth' cost-cutting program",
+    "industry": "Toy manufacturing / consumer products",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://finance.yahoo.com/news/fisher-price-announces-additional-layoffs-140539509.html",
+    "dataQuality": "incomplete",
+    "parseWarnings": [
+      "Yahoo/Business First: additional East Aurora cuts (~15 per an unnamed worker); no official figure, so null."
+    ]
+  },
+  {
     "id": "9ac79feb6414",
     "company": "The Katz Group Americas Inc.",
     "county": "Niagara",
@@ -376,6 +688,30 @@
     "sourceUrl": "https://dol.ny.gov/warn-dashboard",
     "dataQuality": "complete",
     "parseWarnings": []
+  },
+  {
+    "id": "e98ca4f25f9e",
+    "company": "Buffalo AKG Art Museum",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": 13,
+    "totalEmployees": null,
+    "noticeDate": "2025-03-06",
+    "datePosted": null,
+    "layoffDate": "2025-04-03",
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "restructuring of the Visitor Experience department (NLRB later found it unlawful retaliation against newly unionized workers)",
+    "industry": "Arts / cultural institution",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.wkbw.com/news/local-news/buffalo/devastating-union-raises-concerns-over-planned-layoffs-at-buffalo-akg-art-museum",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "WKBW: 13 unionized Visitor Experience workers laid off; NLRB later ordered reinstatement and back pay."
+    ]
   },
   {
     "id": "5b2278107492",
@@ -422,6 +758,30 @@
     "parseWarnings": []
   },
   {
+    "id": "aca43ca51c03",
+    "company": "WKBW-TV (E.W. Scripps)",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": 7,
+    "totalEmployees": null,
+    "noticeDate": "2025-03-05",
+    "datePosted": null,
+    "layoffDate": "2025-04-01",
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "E.W. Scripps cost-cutting across owned stations",
+    "industry": "Broadcast media / television",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://buffalonews.com/life-entertainment/local/article_60446e0a-f9ca-11ef-b71f-b329197ce0ff.html",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "Buffalo News: 6-8 Channel 7 on-air/behind-the-scenes positions eliminated in a Scripps-wide cut."
+    ]
+  },
+  {
     "id": "b6fae8172bdf",
     "company": "Tri Cor Direct Incorporated, an affiliate of Brady Corporation",
     "county": "Erie",
@@ -464,6 +824,30 @@
     "sourceUrl": "https://dol.ny.gov/warn-dashboard",
     "dataQuality": "complete",
     "parseWarnings": []
+  },
+  {
+    "id": "a3577d5a6a7d",
+    "company": "12 Gates Brewing Company",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": null,
+    "totalEmployees": null,
+    "noticeDate": "2025-02-24",
+    "datePosted": null,
+    "layoffDate": null,
+    "closingDate": null,
+    "classification": "plant_closing",
+    "reason": "not publicly disclosed",
+    "industry": "Craft brewing / hospitality",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.wgrz.com/article/news/local/12-gates-brewing-company-announces-closure-williamsville-wny-closing-beer/71-78841e9a-5dba-4291-b3f0-0585a6c0db57",
+    "dataQuality": "incomplete",
+    "parseWarnings": [
+      "WGRZ: Williamsville brewery closed permanently after nine years; headcount not disclosed."
+    ]
   },
   {
     "id": "452ede67a224",
@@ -532,6 +916,54 @@
     "sourceUrl": "https://dol.ny.gov/warn-dashboard",
     "dataQuality": "complete",
     "parseWarnings": []
+  },
+  {
+    "id": "eb17b8274cf1",
+    "company": "Girl Scouts of Western New York",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": 13,
+    "totalEmployees": null,
+    "noticeDate": "2025-02-01",
+    "datePosted": null,
+    "layoffDate": null,
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "declining cookie sales, operating deficits, depleted reserves",
+    "industry": "Nonprofit / youth organization",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.wivb.com/news/local-news/western-new-york/girl-scouts-of-wny-lays-off-over-a-dozen-employees-leaves-positions-vacant/",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "WIVB: 13 laid off plus 4 positions left vacant; local count confirmed."
+    ]
+  },
+  {
+    "id": "e961d23bcdf4",
+    "company": "Journey's End Refugee Services",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": 20,
+    "totalEmployees": null,
+    "noticeDate": "2025-01-31",
+    "datePosted": null,
+    "layoffDate": null,
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "federal suspension of the U.S. Refugee Admissions Program cut 80%+ of funding",
+    "industry": "Nonprofit / refugee services",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://spectrumlocalnews.com/nys/buffalo/news/2025/01/31/journey-s-end-refugee-services-forced-to-cut-20-jobs",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "Spectrum News: 20 Buffalo staff cut after a federal stop-work order on refugee funding."
+    ]
   },
   {
     "id": "e171cbe82389",
@@ -622,6 +1054,30 @@
     "parseWarnings": []
   },
   {
+    "id": "d9f72e3c1c19",
+    "company": "Venture Forthe",
+    "county": "Niagara",
+    "region": "Western",
+    "numberAffected": 133,
+    "totalEmployees": null,
+    "noticeDate": "2025-01-17",
+    "datePosted": null,
+    "layoffDate": "2025-03-31",
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "contract loss",
+    "industry": "Healthcare / home care",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.wivb.com/news/local-news/western-new-york/venture-forthe-to-lay-off-employees-in-niagara-falls-jamestown-olean/",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "WIVB: 280 cut across sites per a WARN notice; 133 in Niagara Falls (Niagara County). May already have an official WARN notice; watch for a duplicate."
+    ]
+  },
+  {
     "id": "7dd33b9df717",
     "company": "CINQ NY Health Home IPA, LLC",
     "county": "Erie",
@@ -686,6 +1142,30 @@
     "sourceUrl": "https://dol.ny.gov/warn-viant-asoo-holdings-llc-region-western-date-posted-1292024-notice-date-1262024",
     "dataQuality": "complete",
     "parseWarnings": []
+  },
+  {
+    "id": "9fca0f668420",
+    "company": "Ingram Micro",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": null,
+    "totalEmployees": null,
+    "noticeDate": "2024-12-03",
+    "datePosted": null,
+    "layoffDate": "2025-03-31",
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "global restructuring to improve organizational efficiency",
+    "industry": "Technology distribution / IT services",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.wkbw.com/news/local-news/ingram-micro-announces-layoffs-of-over-800-workers",
+    "dataQuality": "incomplete",
+    "parseWarnings": [
+      "WKBW: ~850 cut globally; Ingram declined a count for its ~1,700-person Williamsville office, so local headcount is unknown (excluded from totals)."
+    ]
   },
   {
     "id": "893852d49b30",
@@ -756,6 +1236,78 @@
     ]
   },
   {
+    "id": "4e6b911ef39a",
+    "company": "Catholic Health",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": null,
+    "totalEmployees": null,
+    "noticeDate": "2024-11-01",
+    "datePosted": null,
+    "layoffDate": null,
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "reduced payer reimbursement and changing care models; voluntary buyouts then layoffs",
+    "industry": "Healthcare / hospital system",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://buffalonews.com/news/local/business/catholic-health-looks-to-right-size-workforce-with-buyouts/article_88dea9f0-c247-5390-baad-fb06d5c456d0.html",
+    "dataQuality": "incomplete",
+    "parseWarnings": [
+      "Buffalo News: buyouts offered to a 'small number' of nonclinical nonunion staff with layoffs to follow; total not disclosed, so null."
+    ]
+  },
+  {
+    "id": "11b946ab3852",
+    "company": "Independent Health",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": 66,
+    "totalEmployees": null,
+    "noticeDate": "2024-10-17",
+    "datePosted": null,
+    "layoffDate": null,
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "rising prescription/specialty drug costs and healthcare utilization",
+    "industry": "Health insurance",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.wgrz.com/article/money/business/business-first/independent-health-cuts-66-jobs-in-buffalo-business-first-careers-money/71-f29e6200-f48d-4753-9402-3a3ca06bd623",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "WGRZ/Business First: 66 jobs (~4% of workforce) cut at the Amherst HQ; all confirmed local. Below WARN single-site threshold."
+    ]
+  },
+  {
+    "id": "ff99a5c3c846",
+    "company": "The Buffalo News (Lee Enterprises)",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": 10,
+    "totalEmployees": null,
+    "noticeDate": "2024-09-27",
+    "datePosted": null,
+    "layoffDate": null,
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "Lee Enterprises-mandated newsroom reduction",
+    "industry": "News media / journalism",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.investigativepost.org/2024/09/27/more-newsroom-cuts-at-the-buffalo-news/",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "Investigative Post: 10 newsroom positions eliminated (5 buyouts/layoffs, 5 vacant)."
+    ]
+  },
+  {
     "id": "f5fbff68ee6a",
     "company": "Mayer Bros. Apple Products, Inc.",
     "county": "Niagara",
@@ -822,6 +1374,30 @@
     "parseWarnings": []
   },
   {
+    "id": "7e1a26892bb3",
+    "company": "Highmark enGen (IT subsidiary)",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": 7,
+    "totalEmployees": null,
+    "noticeDate": "2024-05-23",
+    "datePosted": null,
+    "layoffDate": null,
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "restructuring of the enGen health-IT subsidiary amid automation",
+    "industry": "Health insurance / IT",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.wgrz.com/article/money/business/business-first/buffalo-business-first-job-layoffs-highmark-bcbs-money/71-bdeea85f-163a-43cb-abf7-894b544ee60a",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "WGRZ/Business First: 98 enGen cuts company-wide, 7 confirmed in Buffalo (local count used)."
+    ]
+  },
+  {
     "id": "dcdeea9b07eb",
     "company": "Tesla Inc.",
     "county": "Erie",
@@ -844,6 +1420,30 @@
     "parseWarnings": []
   },
   {
+    "id": "01dab8ca25d0",
+    "company": "ACV Auctions",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": null,
+    "totalEmployees": null,
+    "noticeDate": "2024-05-08",
+    "datePosted": null,
+    "layoffDate": null,
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "restructuring of ACV Capital (auto-financing arm) amid high interest rates",
+    "industry": "Tech / automotive marketplace",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://buffalonews.com/news/local/business/acv-auctions-layoffs-employees-jobs/article_47d3025a-0c8b-11ef-9cb7-d7dbeb328d0c.html",
+    "dataQuality": "incomplete",
+    "parseWarnings": [
+      "Buffalo News (~early May 2024): ~32 cut company-wide, concentrated in the Buffalo-based ACV Capital unit (~19% of its 167 roles). No NY WARN filed (below the 50-at-one-site threshold). Buffalo-specific headcount not disclosed, so excluded from totals."
+    ]
+  },
+  {
     "id": "872ff48446f1",
     "company": "Tesla Inc.",
     "county": "Erie",
@@ -864,6 +1464,30 @@
     "sourceUrl": "https://dol.ny.gov/warn-tesla-inc-region-western-date-posted-5092024-notice-date-5072024",
     "dataQuality": "complete",
     "parseWarnings": []
+  },
+  {
+    "id": "483ccbc939e3",
+    "company": "Highmark Blue Cross Blue Shield of Western New York (May round)",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": 12,
+    "totalEmployees": null,
+    "noticeDate": "2024-05-07",
+    "datePosted": null,
+    "layoffDate": null,
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "automation reducing manual work in provider relations/operations",
+    "industry": "Health insurance",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.wkbw.com/news/local-news/highmark-blue-cross-blue-shield-cuts-a-dozen-jobs-in-buffalo-amid-growing-challenges",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "WKBW: a dozen Buffalo jobs in provider relations/operations; 12 confirmed local."
+    ]
   },
   {
     "id": "f89c4d842efe",
@@ -954,6 +1578,30 @@
     "parseWarnings": []
   },
   {
+    "id": "ada05a32291c",
+    "company": "Fisher-Price (Mattel)",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": null,
+    "totalEmployees": null,
+    "noticeDate": "2024-03-26",
+    "datePosted": null,
+    "layoffDate": "2024-03-26",
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "Mattel moving preschool brand management (Barney, Thomas & Friends, Imaginext) to El Segundo, CA",
+    "industry": "Toy manufacturing / consumer products",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://buffalonews.com/news/local/business/fisher-price-lays-off-75-to-100-people-in-east-aurora/article_a14a2c76-eb90-11ee-91d1-7b1c0f39534b.html",
+    "dataQuality": "incomplete",
+    "parseWarnings": [
+      "Buffalo News: 75-100 cut at the East Aurora HQ; Mattel declined an exact figure, so headcount is null (excluded from totals)."
+    ]
+  },
+  {
     "id": "6e98a514fc0f",
     "company": "First Transit, Inc. a subsidiary of Transdev, North America Inc.",
     "county": "Erie",
@@ -974,6 +1622,30 @@
     "sourceUrl": "https://dol.ny.gov/warn-first-transit-transdev-north-america-western-2023-0298-3-27-2024",
     "dataQuality": "complete",
     "parseWarnings": []
+  },
+  {
+    "id": "ba261a48b11b",
+    "company": "Highmark Blue Cross Blue Shield of Western New York",
+    "county": "Erie",
+    "region": "Western",
+    "numberAffected": 15,
+    "totalEmployees": null,
+    "noticeDate": "2024-03-11",
+    "datePosted": null,
+    "layoffDate": null,
+    "closingDate": null,
+    "classification": "layoff",
+    "reason": "business-line adjustments amid healthcare changes",
+    "industry": "Health insurance",
+    "union": null,
+    "isAmendment": false,
+    "amends": null,
+    "source": "curated_news",
+    "sourceUrl": "https://www.wgrz.com/article/money/business/business-first/buffalo-business-first-highmark-health-job-cuts-career/71-3cf0788d-8a99-416e-977d-3a47ddf99d4d",
+    "dataQuality": "complete",
+    "parseWarnings": [
+      "WGRZ/Business First: 182 cut company-wide, 15 confirmed in WNY (local count used)."
+    ]
   },
   {
     "id": "9ebce9279de0",

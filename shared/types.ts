@@ -84,3 +84,23 @@ export interface UnemploymentSeries {
   label: string;
   points: UnemploymentPoint[];
 }
+
+/** One quarter of BLS QCEW covered employment for an area/industry. Like the
+ *  unemployment series, this is macro CONTEXT only — it names no employer and
+ *  MUST NOT enter any "jobs lost" total. */
+export interface QcewPoint {
+  /** Quarter start, ISO `YYYY-MM-DD` (e.g. "2024-04-01" for 2024 Q2). */
+  date: string;
+  /** Avg of the quarter's three monthly employment levels; `null` on gaps. */
+  employment: number | null;
+}
+
+export interface QcewSeries {
+  /** Area FIPS, e.g. "36029" (Erie). */
+  areaFips: string;
+  /** Human label, e.g. "Erie County — All industries". */
+  label: string;
+  /** QCEW NAICS `industry_code` this series covers ("10" = all industries). */
+  industryCode: string;
+  points: QcewPoint[];
+}

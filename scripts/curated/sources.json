@@ -1,0 +1,45 @@
+{
+  "description": "Canonical WNY outlets swept for sub-WARN-threshold or not-yet-filed layoffs/closures. Used by the agent-driven news sweep (see scripts/README.md). Editing this list changes what the sweep fans out over.",
+  "sources": [
+    {
+      "name": "Buffalo Business First",
+      "url": "https://www.bizjournals.com/buffalo",
+      "searchHint": "Buffalo Business First layoffs OR closing OR plant closure Erie Niagara"
+    },
+    {
+      "name": "The Buffalo News",
+      "url": "https://buffalonews.com/news/local/business",
+      "searchHint": "Buffalo News layoffs OR closing Western New York"
+    },
+    {
+      "name": "Investigative Post",
+      "url": "https://www.investigativepost.org",
+      "searchHint": "Investigative Post Buffalo layoffs closure jobs lost"
+    },
+    {
+      "name": "WNY Labor Today",
+      "url": "https://www.wnylabortoday.com",
+      "searchHint": "WNY Labor Today layoffs union plant closing Buffalo"
+    },
+    {
+      "name": "WGRZ (Channel 2)",
+      "url": "https://www.wgrz.com/money",
+      "searchHint": "WGRZ Buffalo layoffs OR closing OR closure"
+    },
+    {
+      "name": "WIVB (News 4)",
+      "url": "https://www.wivb.com/news/business",
+      "searchHint": "WIVB Buffalo layoffs OR plant closure"
+    },
+    {
+      "name": "WKBW (Channel 7)",
+      "url": "https://www.wkbw.com",
+      "searchHint": "WKBW Buffalo layoffs OR closing"
+    },
+    {
+      "name": "Spectrum News 1 Buffalo",
+      "url": "https://spectrumlocalnews.com/nys/buffalo/news",
+      "searchHint": "Spectrum News Buffalo layoffs OR closure Erie Niagara"
+    }
+  ]
+}

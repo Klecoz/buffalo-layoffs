@@ -2,16 +2,16 @@ import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import type { LayoffEvent } from "../../shared/types";
 import { useData } from "../context/DataContext";
 import { useFilters } from "../context/FilterContext";
-import { formatDate, formatNumber } from "../lib/format";
+import { formatClassification, formatDate, formatNumber } from "../lib/format";
 import { SectionHead } from "./ui";
 
-const M = { top: 24, right: 48, bottom: 28, left: 16 };
+const M = { top: 24, right: 52, bottom: 30, left: 18 };
 const HEIGHT = 440;
 const DAY = 86_400_000;
 
 const CLASS_FILL: Record<string, string> = {
   plant_closing: "var(--color-brick)",
-  layoff: "var(--color-amber)",
+  layoff: "var(--color-slate)",
   other: "var(--color-steel)",
   unknown: "var(--color-ink-faint)",
 };
@@ -101,29 +101,32 @@ export function TimelineView() {
   const drawOrder = [...filtered].sort((a, b) => (b.numberAffected ?? 0) - (a.numberAffected ?? 0));
 
   return (
-    <div className="reveal">
+    <div className="view">
       <SectionHead kicker="Every notice, on a timeline" title="Waves of loss over time" />
 
       {/* legend */}
-      <div className="mb-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.72rem] text-ink-soft">
-        <span className="flex items-center gap-1.5">
-          <span className="inline-block h-3 w-3 rounded-full bg-brick" /> Plant closing
+      <div className="legend">
+        <span className="it">
+          <span className="dot" style={{ background: "var(--color-brick)" }} /> Plant closing
         </span>
-        <span className="flex items-center gap-1.5">
-          <span className="inline-block h-3 w-3 rounded-full bg-amber" /> Layoff
+        <span className="it">
+          <span className="dot" style={{ background: "var(--color-slate)" }} /> Layoff
         </span>
-        <span className="flex items-center gap-1.5">
-          <span className="inline-block h-3 w-3 rounded-full border border-ink-faint bg-transparent" />{" "}
+        <span className="it">
+          <span
+            className="dot"
+            style={{ background: "transparent", border: "1px solid var(--color-ink-faint)" }}
+          />{" "}
           Count unknown
         </span>
-        <span className="flex items-center gap-1.5">
-          <span className="inline-block h-0.5 w-5 bg-steel-soft/60" />{" "}
+        <span className="it">
+          <span className="ln" style={{ background: "var(--color-gold)" }} />{" "}
           {series?.label ?? "Unemployment"} rate (right axis)
         </span>
-        <span className="text-ink-faint">· dot size ∝ jobs cut</span>
+        <span className="muted">· dot size ∝ jobs cut</span>
       </div>
 
-      <div ref={ref} className="relative w-full">
+      <div ref={ref} className="tl-wrap">
         <svg
           width={width || 900}
           height={HEIGHT}
@@ -139,7 +142,7 @@ export function TimelineView() {
                 y1={M.top}
                 y2={M.top + innerH}
                 stroke="var(--color-rule)"
-                strokeWidth={tk.year ? 1 : 0.5}
+                strokeWidth={1}
                 strokeDasharray={tk.year ? undefined : "2 3"}
               />
               <text
@@ -160,9 +163,9 @@ export function TimelineView() {
               <path
                 d={ratePath}
                 fill="none"
-                stroke="var(--color-steel-soft)"
-                strokeWidth={1.5}
-                opacity={0.45}
+                stroke="var(--color-gold)"
+                strokeWidth={1.75}
+                opacity={0.65}
               />
               {[rLo, Math.round((rLo + rHi) / 2), rHi].map((r) => (
                 <text
@@ -236,23 +239,21 @@ export function TimelineView() {
 
         {hover && (
           <div
-            className="pointer-events-none absolute z-10 w-56 -translate-x-1/2 border border-rule-strong bg-paper-raised px-3 py-2 shadow-lg shadow-black/50"
+            className="tl-tip"
             style={{
-              left: Math.min(Math.max(hover.x, 116), (width || 900) - 116),
+              left: Math.min(Math.max(hover.x, 110), (width || 900) - 110),
               top: hover.y + 14,
             }}
           >
-            <div className="font-sans text-[1rem] font-semibold leading-tight text-ink">
-              {hover.e.company}
-            </div>
-            <div className="nums mt-1 font-mono text-sm text-amber">
+            <div className="co">{hover.e.company}</div>
+            <div className="n nums">
               {hover.e.numberAffected != null
                 ? `${formatNumber(hover.e.numberAffected)} jobs`
                 : "Count not reported"}
             </div>
-            <div className="mt-0.5 text-[0.75rem] text-ink-faint">
+            <div className="m">
               {hover.e.county !== "unknown" ? `${hover.e.county} Co. · ` : ""}
-              {formatDate(hover.e.noticeDate)}
+              {formatDate(hover.e.noticeDate)} · {formatClassification(hover.e.classification)}
             </div>
           </div>
         )}

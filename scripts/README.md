@@ -1,7 +1,7 @@
 # Data pipeline
 
-Builds `public/data/{layoffs,meta,unemployment}.json` from public sources. Each
-stage caches to `scripts/cache/` (git-ignored), so re-runs are cheap.
+Builds `public/data/{layoffs,meta,unemployment,qcew}.json` from public sources.
+Each stage caches to `scripts/cache/` (git-ignored), so re-runs are cheap.
 
 ## Refresh everything
 
@@ -21,7 +21,9 @@ This runs, in order:
    unreadable becomes `null` + a `parseWarnings` note; the event is still kept.
 4. **`ingest-fred.ts`** — fetches Buffalo-metro and Erie County unemployment
    rates from FRED (no API key) → `public/data/unemployment.json`.
-5. **`normalize.ts`** — merges WARN PDFs + the Tableau export + the curated list,
+5. **`ingest-qcew.ts`** — fetches BLS QCEW county employment (see below) →
+   `public/data/qcew.json`.
+6. **`normalize.ts`** — merges WARN PDFs + the Tableau export + the curated list,
    filters to Erie/Niagara, applies the 2024+ window, dedups amendments, and
    writes `public/data/layoffs.json` + `meta.json`.
 
@@ -52,12 +54,64 @@ site; `ingest-tableau.ts` decodes it, keeps Erie/Niagara, and aggregates per-sit
 rows back into one event per notice. Then re-run `npm run refresh-data` (or just
 `npm run refresh:normalize`) and review the diff to `public/data/layoffs.json`.
 
+## BLS QCEW county employment (context, not events)
+
+`ingest-qcew.ts` pulls **covered employment** for Erie (FIPS `36029`) and Niagara
+(`36063`) counties from the BLS QCEW Open Data Access CSV endpoint — no API key:
+
+```
+https://data.bls.gov/cew/data/api/{year}/{qtr}/area/{fips}.csv
+```
+
+One file per area+quarter; rows span every ownership × industry × aggregation
+level. We keep two rows per county, matched on `(own_code, industry_code)`:
+
+- **All industries:** `own_code = "5"`, `industry_code = "10"`
+- **Manufacturing (NAICS 31-33):** `own_code = "5"`, `industry_code = "31-33"`
+
+Each quarter's value is the mean of `month{1,2,3}_emplvl`. The most recent quarter
+lags ~5 months, so not-yet-published quarters simply 404 and are skipped.
+
+This is **macro context only**, exactly like the FRED unemployment series — it
+names no employer and **never enters `layoffs.json` or any "jobs lost" total**. It
+lets layoff clusters be read against the actual employment base (e.g. a
+manufacturing employment drop with no matching WARN notice = likely under-reporting).
+The app renders it as "The employment base" in the Stats view.
+
 ## Curated notable layoffs
 
 `scripts/curated/notable.json` holds hand-entered, news-reported events that fall
 below the WARN threshold (small closures WARN never captures). Each needs a
 `sourceUrl`. They are always tagged `source: "curated_news"` and shown as
 "News-reported" in the app. Edit the JSON and re-run the pipeline to update.
+
+### News sweep (agent-assisted, human-approved)
+
+Finding those sub-threshold events by hand is tedious, so it's run as a periodic
+**agent-driven sweep** over a pinned list of WNY outlets in
+`scripts/curated/sources.json` (Buffalo Business First, The Buffalo News,
+Investigative Post, WNY Labor Today, WGRZ/WIVB/WKBW, Spectrum News). To run one,
+ask Claude to **"run the WNY layoff news sweep."** It will:
+
+1. **Fan out** one sub-agent per source (web search/fetch), each scoped to recent
+   Erie/Niagara **layoffs or closures**, returning candidates as JSON objects
+   matching the `CuratedEntry` shape in `curated.ts` (`company`, `county`,
+   `numberAffected` — `null` if unknown — `noticeDate`, `layoffDate`,
+   `classification`, `reason`, `industry`, `sourceUrl`, `note`).
+2. **Dedup** candidates against both `notable.json` and the official events in
+   `public/data/layoffs.json`, using the same rule the pipeline uses.
+3. **Present the survivors for your approval.** Nothing is auto-committed — only
+   entries you OK get appended to `notable.json`.
+4. After appending, run the guardrail and re-normalize:
+
+   ```bash
+   npx tsx scripts/curated/check.ts   # validates + flags any duplicate data
+   npm run refresh-data               # (or refresh:normalize) folds them in
+   ```
+
+`check.ts` validates `notable.json` and refuses (exits non-zero) if any entry
+duplicates an already-tracked official event or another curated entry — so we
+never double-count.
 
 ## Tests
 
