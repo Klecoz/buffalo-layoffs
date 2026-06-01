@@ -177,7 +177,7 @@
     "reason": "not publicly disclosed",
     "industry": "Craft brewing / hospitality",
     "sourceUrl": "https://www.wgrz.com/article/news/local/12-gates-brewing-company-announces-closure-williamsville-wny-closing-beer/71-78841e9a-5dba-4291-b3f0-0585a6c0db57",
-    "note": "WGRZ: Williamsville brewery closed permanently after nine years; headcount not disclosed."
+    "note": "WGRZ: Williamsville brewery closed permanently after 12 years (opened 2015); headcount not disclosed."
   },
   {
     "company": "WKBW-TV (E.W. Scripps)",
@@ -214,18 +214,6 @@
     "industry": "Religious organization / nonprofit",
     "sourceUrl": "https://spectrumlocalnews.com/nys/buffalo/news/2025/08/06/buffalo-diocese-to-cut-staff-by-22--in-latest-cost-saving-measure",
     "note": "Spectrum News: 18 of 75 Catholic Center staff (22%) cut; communications department eliminated."
-  },
-  {
-    "company": "Catholic Health",
-    "county": "Erie",
-    "numberAffected": null,
-    "noticeDate": "2024-11-01",
-    "layoffDate": null,
-    "classification": "layoff",
-    "reason": "reduced payer reimbursement and changing care models; voluntary buyouts then layoffs",
-    "industry": "Healthcare / hospital system",
-    "sourceUrl": "https://buffalonews.com/news/local/business/catholic-health-looks-to-right-size-workforce-with-buyouts/article_88dea9f0-c247-5390-baad-fb06d5c456d0.html",
-    "note": "Buffalo News: buyouts offered to a 'small number' of nonclinical nonunion staff with layoffs to follow; total not disclosed, so null."
   },
   {
     "company": "Erie County Department of Health (PHEP program)",
@@ -312,28 +300,16 @@
     "note": "WIVB: Main St. Buffalo Family Planning Center closing Nov 24, 2025; headcount not disclosed, so null."
   },
   {
-    "company": "Kaleida Health (ENT Center, Buffalo General)",
-    "county": "Erie",
-    "numberAffected": null,
-    "noticeDate": "2025-09-01",
-    "layoffDate": "2025-12-31",
-    "classification": "plant_closing",
-    "reason": "federal Medicaid funding reductions",
-    "industry": "Healthcare",
-    "sourceUrl": "https://www.wkbw.com/news/local-news/northtowns/keep-these-places-open-kaleida-health-closes-more-facilities-leaving-workers-and-patients-concerned-about-healthcare-access",
-    "note": "WKBW: Ear-Nose-Throat Center at Buffalo General closing among late-2025 service shutdowns; headcount not published, so null."
-  },
-  {
     "company": "Kaleida Health (Buffalo General Medical Rehabilitation Unit)",
     "county": "Erie",
     "numberAffected": 22,
-    "noticeDate": "2026-02-17",
+    "noticeDate": "2026-02-19",
     "layoffDate": null,
     "classification": "layoff",
     "reason": "proposed 50% rehab-bed reduction (34 to 16) under Kaleida's $200M plan",
     "industry": "Healthcare / inpatient rehabilitation",
-    "sourceUrl": "https://www.beckershospitalreview.com/uncategorized/new-york-hospital-to-reduce-rehab-beds-affecting-22-employees/",
-    "note": "Becker's: 22 positions affected; PROPOSED, pending NYSDOH approval as of Feb 2026."
+    "sourceUrl": "https://www.wkbw.com/news/local-news/union-opposes-kaleida-healths-plan-to-cut-medical-rehabilitation-beds-at-buffalo-general",
+    "note": "WKBW/CWA Local 1168: 22 positions affected by a PROPOSED 50% rehab-bed cut, pending NYSDOH approval (Feb 2026)."
   },
   {
     "company": "Erie County Medical Center (ECMC)",
@@ -345,7 +321,7 @@
     "reason": "inadequate Medicaid/payer reimbursements, inflation, financial pressures",
     "industry": "Healthcare / public hospital",
     "sourceUrl": "https://www.wkbw.com/news/local-news/ecmc-to-lay-off-around-150-employees",
-    "note": "WGRZ: ~150 layoffs (3% of workforce), mostly non-clinical, plus management furloughs. Large enough to file a WARN; watch for a future WARN duplicate."
+    "note": "WKBW: ~150 layoffs (3% of workforce), mostly non-clinical, plus management furloughs. Large enough to file a WARN; watch for a future WARN duplicate."
   },
   {
     "company": "Venture Forthe",

@@ -88,13 +88,13 @@
     "parseWarnings": []
   },
   {
-    "id": "da90c3c44695",
+    "id": "f3392819fdc6",
     "company": "Kaleida Health (Buffalo General Medical Rehabilitation Unit)",
     "county": "Erie",
     "region": "Western",
     "numberAffected": 22,
     "totalEmployees": null,
-    "noticeDate": "2026-02-17",
+    "noticeDate": "2026-02-19",
     "datePosted": null,
     "layoffDate": null,
     "closingDate": null,
@@ -105,10 +105,10 @@
     "isAmendment": false,
     "amends": null,
     "source": "curated_news",
-    "sourceUrl": "https://www.beckershospitalreview.com/uncategorized/new-york-hospital-to-reduce-rehab-beds-affecting-22-employees/",
+    "sourceUrl": "https://www.wkbw.com/news/local-news/union-opposes-kaleida-healths-plan-to-cut-medical-rehabilitation-beds-at-buffalo-general",
     "dataQuality": "complete",
     "parseWarnings": [
-      "Becker's: 22 positions affected; PROPOSED, pending NYSDOH approval as of Feb 2026."
+      "WKBW/CWA Local 1168: 22 positions affected by a PROPOSED 50% rehab-bed cut, pending NYSDOH approval (Feb 2026)."
     ]
   },
   {
@@ -154,7 +154,7 @@
     "sourceUrl": "https://www.wkbw.com/news/local-news/ecmc-to-lay-off-around-150-employees",
     "dataQuality": "complete",
     "parseWarnings": [
-      "WGRZ: ~150 layoffs (3% of workforce), mostly non-clinical, plus management furloughs. Large enough to file a WARN; watch for a future WARN duplicate."
+      "WKBW: ~150 layoffs (3% of workforce), mostly non-clinical, plus management furloughs. Large enough to file a WARN; watch for a future WARN duplicate."
     ]
   },
   {
@@ -343,30 +343,6 @@
     "dataQuality": "complete",
     "parseWarnings": [
       "Spectrum News: Amherst surgery center closing Oct 1, 2025, 32 employees affected."
-    ]
-  },
-  {
-    "id": "e71d0b7d71ae",
-    "company": "Kaleida Health (ENT Center, Buffalo General)",
-    "county": "Erie",
-    "region": "Western",
-    "numberAffected": null,
-    "totalEmployees": null,
-    "noticeDate": "2025-09-01",
-    "datePosted": null,
-    "layoffDate": "2025-12-31",
-    "closingDate": "2025-12-31",
-    "classification": "plant_closing",
-    "reason": "federal Medicaid funding reductions",
-    "industry": "Healthcare",
-    "union": null,
-    "isAmendment": false,
-    "amends": null,
-    "source": "curated_news",
-    "sourceUrl": "https://www.wkbw.com/news/local-news/northtowns/keep-these-places-open-kaleida-health-closes-more-facilities-leaving-workers-and-patients-concerned-about-healthcare-access",
-    "dataQuality": "incomplete",
-    "parseWarnings": [
-      "WKBW: Ear-Nose-Throat Center at Buffalo General closing among late-2025 service shutdowns; headcount not published, so null."
     ]
   },
   {
@@ -846,7 +822,7 @@
     "sourceUrl": "https://www.wgrz.com/article/news/local/12-gates-brewing-company-announces-closure-williamsville-wny-closing-beer/71-78841e9a-5dba-4291-b3f0-0585a6c0db57",
     "dataQuality": "incomplete",
     "parseWarnings": [
-      "WGRZ: Williamsville brewery closed permanently after nine years; headcount not disclosed."
+      "WGRZ: Williamsville brewery closed permanently after 12 years (opened 2015); headcount not disclosed."
     ]
   },
   {
@@ -1233,30 +1209,6 @@
     "dataQuality": "complete",
     "parseWarnings": [
       "notice date not found"
-    ]
-  },
-  {
-    "id": "4e6b911ef39a",
-    "company": "Catholic Health",
-    "county": "Erie",
-    "region": "Western",
-    "numberAffected": null,
-    "totalEmployees": null,
-    "noticeDate": "2024-11-01",
-    "datePosted": null,
-    "layoffDate": null,
-    "closingDate": null,
-    "classification": "layoff",
-    "reason": "reduced payer reimbursement and changing care models; voluntary buyouts then layoffs",
-    "industry": "Healthcare / hospital system",
-    "union": null,
-    "isAmendment": false,
-    "amends": null,
-    "source": "curated_news",
-    "sourceUrl": "https://buffalonews.com/news/local/business/catholic-health-looks-to-right-size-workforce-with-buyouts/article_88dea9f0-c247-5390-baad-fb06d5c456d0.html",
-    "dataQuality": "incomplete",
-    "parseWarnings": [
-      "Buffalo News: buyouts offered to a 'small number' of nonclinical nonunion staff with layoffs to follow; total not disclosed, so null."
     ]
   },
   {

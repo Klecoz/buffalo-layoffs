@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-06-01T03:56:44.936Z",
+  "generatedAt": "2026-06-01T04:10:28.786Z",
   "dateRange": [
     "2024-01-19",
     "2026-04-27"
   ],
-  "totalEvents": 66,
-  "excludedFromTotalsCount": 11,
+  "totalEvents": 64,
+  "excludedFromTotalsCount": 9,
   "sourceCounts": {
     "warn_pdf": 20,
     "tableau_csv": 15,
     "tableau_live": 0,
-    "curated_news": 31
+    "curated_news": 29
   }
 }
