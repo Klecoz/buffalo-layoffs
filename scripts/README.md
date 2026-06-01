@@ -100,9 +100,23 @@ ask Claude to **"run the WNY layoff news sweep."** It will:
    `classification`, `reason`, `industry`, `sourceUrl`, `note`).
 2. **Dedup** candidates against both `notable.json` and the official events in
    `public/data/layoffs.json`, using the same rule the pipeline uses.
-3. **Present the survivors for your approval.** Nothing is auto-committed — only
+3. **Verify every candidate against its own `sourceUrl` — REQUIRED, not
+   optional.** Open each cited article (the browser tool gets past the bot-blocks
+   that `WebFetch` hits) and confirm, from the page itself:
+   - the **article date** matches `noticeDate` (catches old articles re-dated to
+     today — e.g. a 1992 Moog story or a 2019 Catholic Health story);
+   - the **company and event** are what the candidate claims (catches a labor
+     *dispute* dressed up as a *closure*);
+   - the **headcount** is the stated *local* figure (never a nationwide number),
+     and is `null` if the local count isn't given;
+   - the **URL actually resolves** (swap any 404 for a working source).
+
+   Drop anything you can't confirm. If a `sourceUrl` is on a domain the browser
+   tool can't load, corroborate the event via an alternate accessible outlet and
+   replace the URL with that one.
+4. **Present the survivors for your approval.** Nothing is auto-committed — only
    entries you OK get appended to `notable.json`.
-4. After appending, run the guardrail and re-normalize:
+5. After appending, run the guardrail and re-normalize:
 
    ```bash
    npx tsx scripts/curated/check.ts   # validates + flags any duplicate data
@@ -112,6 +126,13 @@ ask Claude to **"run the WNY layoff news sweep."** It will:
 `check.ts` validates `notable.json` and refuses (exits non-zero) if any entry
 duplicates an already-tracked official event or another curated entry — so we
 never double-count.
+
+> **Why step 3 is mandatory.** The first sweep produced **4 bad entries out of
+> 31** (~13%): two fabricated headcounts traced to a 1992 and a 2024-misdated
+> article (Moog, Weinberg) and two misattributions (Catholic Health, Kaleida
+> ENT). The agents are a great *lead generator* but an unreliable *source of
+> record* — only opening each article caught the errors. Treat sweep output as
+> leads to confirm, never as facts to commit.
 
 ## Tests
 
